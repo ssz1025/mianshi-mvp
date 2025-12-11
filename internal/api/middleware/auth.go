@@ -5,7 +5,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"github.com/d60-Lab/gin-template/config"
+	"github.com/d60-Lab/gin-template/pkg/config"
 	"github.com/d60-Lab/gin-template/pkg/jwt"
 	"github.com/d60-Lab/gin-template/pkg/response"
 )

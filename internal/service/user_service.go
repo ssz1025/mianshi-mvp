@@ -7,10 +7,10 @@ import (
 	"github.com/google/uuid"
 	"golang.org/x/crypto/bcrypt"
 
-	"github.com/d60-Lab/gin-template/config"
 	"github.com/d60-Lab/gin-template/internal/dto"
 	"github.com/d60-Lab/gin-template/internal/model"
 	"github.com/d60-Lab/gin-template/internal/repository"
+	"github.com/d60-Lab/gin-template/pkg/config"
 	"github.com/d60-Lab/gin-template/pkg/jwt"
 )
 
@@ -73,7 +73,7 @@ func (s *userService) Create(ctx context.Context, req *dto.CreateUserRequest) (*
 		ID:       uuid.New().String(),
 		Username: req.Username,
 		Email:    req.Email,
-		Password: hashedPassword,
+		Password: hashedPassword, // pragma: allowlist secret
 		Age:      req.Age,
 	}
 

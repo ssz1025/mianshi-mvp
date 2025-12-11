@@ -13,12 +13,12 @@ import (
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
 
-	"github.com/d60-Lab/gin-template/config"
 	"github.com/d60-Lab/gin-template/internal/api/handler"
 	"github.com/d60-Lab/gin-template/internal/api/middleware"
 	"github.com/d60-Lab/gin-template/internal/api/router"
 	"github.com/d60-Lab/gin-template/internal/repository"
 	"github.com/d60-Lab/gin-template/internal/service"
+	"github.com/d60-Lab/gin-template/pkg/config"
 	"github.com/d60-Lab/gin-template/pkg/database"
 	"github.com/d60-Lab/gin-template/pkg/logger"
 	"github.com/d60-Lab/gin-template/pkg/validator"

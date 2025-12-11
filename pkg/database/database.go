@@ -8,8 +8,8 @@ import (
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
 
-	"github.com/d60-Lab/gin-template/config"
 	"github.com/d60-Lab/gin-template/internal/model"
+	"github.com/d60-Lab/gin-template/pkg/config"
 )
 
 // InitDB 初始化数据库连接

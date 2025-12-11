@@ -29,7 +29,9 @@ WORKDIR /app
 
 # 从构建阶段复制二进制文件
 COPY --from=builder /app/server .
-COPY --from=builder /app/config ./config
+
+# 复制配置文件
+COPY config/config.docker.yaml ./config/config.yaml
 
 # 暴露端口
 EXPOSE 8080

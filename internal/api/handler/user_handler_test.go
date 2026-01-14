@@ -13,6 +13,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
 
+	"github.com/d60-Lab/gin-template/internal/api/middleware"
 	"github.com/d60-Lab/gin-template/internal/dto"
 	"github.com/d60-Lab/gin-template/internal/service"
 	"github.com/d60-Lab/gin-template/pkg/validator"
@@ -107,14 +108,13 @@ func TestGetUser(t *testing.T) {
 	mockService.On("GetByID", mock.Anything, "1").Return(expectedUser, nil)
 
 	w := httptest.NewRecorder()
-	c, r := gin.CreateTestContext(w)
-	r.GET("/users/:id", handler.GetUser)
+	_, r := gin.CreateTestContext(w)
+	r.GET("/users/:id", middleware.Validation(&dto.GetUserRequest{}), handler.GetUser)
 
 	req, err := http.NewRequestWithContext(context.Background(), "GET", "/users/1", nil)
 	if err != nil {
 		t.Fatalf("failed to create request: %v", err)
 	}
-	c.Request = req
 
 	r.ServeHTTP(w, req)
 
@@ -140,11 +140,15 @@ func TestCreateUser(t *testing.T) {
 		Email:    "test@example.com",
 	}
 
-	mockService.On("Create", mock.Anything, createReq).Return(expectedUser, nil)
+	mockService.On("Create", mock.Anything, mock.MatchedBy(func(req *dto.CreateUserRequest) bool {
+		return req.Username == createReq.Username &&
+			req.Email == createReq.Email &&
+			req.Password == createReq.Password //nolint:gosec // pragma: allowlist secret
+	})).Return(expectedUser, nil)
 
 	w := httptest.NewRecorder()
-	c, r := gin.CreateTestContext(w)
-	r.POST("/users", handler.CreateUser)
+	_, r := gin.CreateTestContext(w)
+	r.POST("/users", middleware.Validation(&dto.CreateUserRequest{}), handler.CreateUser)
 
 	jsonData, err := json.Marshal(createReq)
 	if err != nil {
@@ -155,7 +159,6 @@ func TestCreateUser(t *testing.T) {
 		t.Fatalf("failed to create request: %v", err)
 	}
 	req.Header.Set("Content-Type", "application/json")
-	c.Request = req
 
 	r.ServeHTTP(w, req)
 
@@ -172,17 +175,22 @@ func TestGetUserNotFound(t *testing.T) {
 	mockService.On("GetByID", mock.Anything, "999").Return(nil, service.ErrUserNotFound)
 
 	w := httptest.NewRecorder()
-	c, r := gin.CreateTestContext(w)
-	r.GET("/users/:id", handler.GetUser)
+	_, r := gin.CreateTestContext(w)
+	r.GET("/users/:id", middleware.Validation(&dto.GetUserRequest{}), handler.GetUser)
 
 	req, err := http.NewRequestWithContext(context.Background(), "GET", "/users/999", nil)
 	if err != nil {
 		t.Fatalf("failed to create request: %v", err)
 	}
-	c.Request = req
 
 	r.ServeHTTP(w, req)
 
 	assert.Equal(t, http.StatusOK, w.Code)
+
+	var resp map[string]interface{}
+	err = json.Unmarshal(w.Body.Bytes(), &resp)
+	assert.NoError(t, err)
+	assert.Equal(t, float64(http.StatusNotFound), resp["code"])
+
 	mockService.AssertExpectations(t)
 }

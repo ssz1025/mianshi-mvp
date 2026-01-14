@@ -1,10 +1,9 @@
 package handler
 
 import (
-	"strconv"
-
 	"github.com/gin-gonic/gin"
 
+	"github.com/d60-Lab/gin-template/internal/api/middleware"
 	"github.com/d60-Lab/gin-template/internal/dto"
 	"github.com/d60-Lab/gin-template/internal/service"
 	"github.com/d60-Lab/gin-template/pkg/response"
@@ -48,14 +47,9 @@ func (h *Handler) HealthCheck(c *gin.Context) {
 // @Failure 500 {object} response.Response
 // @Router /api/v1/users [post]
 func (h *Handler) CreateUser(c *gin.Context) {
-	var req dto.CreateUserRequest
+	req := middleware.MustGetRequest[dto.CreateUserRequest](c)
 
-	if err := c.ShouldBindJSON(&req); err != nil {
-		response.BadRequest(c, err.Error())
-		return
-	}
-
-	user, err := h.userService.Create(c.Request.Context(), &req)
+	user, err := h.userService.Create(c.Request.Context(), req)
 	if err != nil {
 		if err == service.ErrUserExists {
 			response.BadRequest(c, "user already exists")
@@ -80,9 +74,9 @@ func (h *Handler) CreateUser(c *gin.Context) {
 // @Failure 500 {object} response.Response
 // @Router /api/v1/users/{id} [get]
 func (h *Handler) GetUser(c *gin.Context) {
-	id := c.Param("id")
+	req := middleware.MustGetRequest[dto.GetUserRequest](c)
 
-	user, err := h.userService.GetByID(c.Request.Context(), id)
+	user, err := h.userService.GetByID(c.Request.Context(), req.ID)
 	if err != nil {
 		if err == service.ErrUserNotFound {
 			response.NotFound(c, "user not found")
@@ -111,15 +105,9 @@ func (h *Handler) GetUser(c *gin.Context) {
 // @Failure 500 {object} response.Response
 // @Router /api/v1/users/{id} [put]
 func (h *Handler) UpdateUser(c *gin.Context) {
-	id := c.Param("id")
-	var req dto.UpdateUserRequest
+	req := middleware.MustGetRequest[dto.UpdateUserRequest](c)
 
-	if err := c.ShouldBindJSON(&req); err != nil {
-		response.BadRequest(c, err.Error())
-		return
-	}
-
-	user, err := h.userService.Update(c.Request.Context(), id, &req)
+	user, err := h.userService.Update(c.Request.Context(), req.ID, req)
 	if err != nil {
 		if err == service.ErrUserNotFound {
 			response.NotFound(c, "user not found")
@@ -147,9 +135,9 @@ func (h *Handler) UpdateUser(c *gin.Context) {
 // @Failure 500 {object} response.Response
 // @Router /api/v1/users/{id} [delete]
 func (h *Handler) DeleteUser(c *gin.Context) {
-	id := c.Param("id")
+	req := middleware.MustGetRequest[dto.DeleteUserRequest](c)
 
-	if err := h.userService.Delete(c.Request.Context(), id); err != nil {
+	if err := h.userService.Delete(c.Request.Context(), req.ID); err != nil {
 		if err == service.ErrUserNotFound {
 			response.NotFound(c, "user not found")
 			return
@@ -173,14 +161,9 @@ func (h *Handler) DeleteUser(c *gin.Context) {
 // @Failure 500 {object} response.Response
 // @Router /api/v1/auth/login [post]
 func (h *Handler) Login(c *gin.Context) {
-	var req dto.LoginRequest
+	req := middleware.MustGetRequest[dto.LoginRequest](c)
 
-	if err := c.ShouldBindJSON(&req); err != nil {
-		response.BadRequest(c, err.Error())
-		return
-	}
-
-	loginResp, err := h.userService.Login(c.Request.Context(), &req)
+	loginResp, err := h.userService.Login(c.Request.Context(), req)
 	if err != nil {
 		if err == service.ErrUserNotFound || err == service.ErrInvalidPassword {
 			response.BadRequest(c, "invalid username or password")
@@ -205,34 +188,18 @@ func (h *Handler) Login(c *gin.Context) {
 // @Failure 500 {object} response.Response
 // @Router /api/v1/users [get]
 func (h *Handler) ListUsers(c *gin.Context) {
-	pageStr := c.DefaultQuery("page", "1")
-	page, err := strconv.Atoi(pageStr)
-	if err != nil {
-		page = 1
-	}
+	req := middleware.MustGetRequest[dto.ListUsersRequest](c)
+	req.SetDefaults()
 
-	pageSizeStr := c.DefaultQuery("page_size", "10")
-	pageSize, err := strconv.Atoi(pageSizeStr)
-	if err != nil {
-		pageSize = 10
-	}
-
-	if page < 1 {
-		page = 1
-	}
-	if pageSize < 1 || pageSize > 100 {
-		pageSize = 10
-	}
-
-	users, err := h.userService.List(c.Request.Context(), page, pageSize)
+	users, err := h.userService.List(c.Request.Context(), req.Page, req.PageSize)
 	if err != nil {
 		response.InternalError(c, err)
 		return
 	}
 
 	response.Success(c, gin.H{
-		"page":      page,
-		"page_size": pageSize,
+		"page":      req.Page,
+		"page_size": req.PageSize,
 		"list":      users,
 	})
 }

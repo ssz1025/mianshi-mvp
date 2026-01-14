@@ -9,6 +9,7 @@ import (
 	_ "github.com/d60-Lab/gin-template/docs" // swagger docs
 	"github.com/d60-Lab/gin-template/internal/api/handler"
 	"github.com/d60-Lab/gin-template/internal/api/middleware"
+	"github.com/d60-Lab/gin-template/internal/dto"
 	"github.com/d60-Lab/gin-template/pkg/config"
 )
 
@@ -48,17 +49,17 @@ func Setup(r *gin.Engine, h *handler.Handler, cfg *config.Config) {
 		// 认证相关
 		auth := v1.Group("/auth")
 		{
-			auth.POST("/login", h.Login)
+			auth.POST("/login", middleware.Validation(&dto.LoginRequest{}), h.Login)
 		}
 
 		// 用户模块
 		users := v1.Group("/users")
 		{
-			users.POST("", h.CreateUser)
-			users.GET("", h.ListUsers)
-			users.GET("/:id", h.GetUser)
-			users.PUT("/:id", middleware.Auth(cfg), h.UpdateUser)
-			users.DELETE("/:id", middleware.Auth(cfg), middleware.AdminOnly(), h.DeleteUser)
+			users.POST("", middleware.Validation(&dto.CreateUserRequest{}), h.CreateUser)
+			users.GET("", middleware.Validation(&dto.ListUsersRequest{}), h.ListUsers)
+			users.GET("/:id", middleware.Validation(&dto.GetUserRequest{}), h.GetUser)
+			users.PUT("/:id", middleware.Auth(cfg), middleware.Validation(&dto.UpdateUserRequest{}), h.UpdateUser)
+			users.DELETE("/:id", middleware.Auth(cfg), middleware.AdminOnly(), middleware.Validation(&dto.DeleteUserRequest{}), h.DeleteUser)
 		}
 	}
 }

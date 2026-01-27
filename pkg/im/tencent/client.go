@@ -2,6 +2,7 @@ package tencent
 
 import (
 	"bytes"
+	"context"
 	"crypto/hmac"
 	"crypto/sha256"
 	"encoding/base64"
@@ -29,10 +30,10 @@ type Client struct {
 }
 
 // NewClient 创建客户端
-func NewClient(appID int, secretKey, admin string, expire int) (*Client, error) {
+func NewClient(appID int, secretKey, admin string, expire int) (*Client, error) { // pragma: allowlist secret
 	c := &Client{
 		AppID:      appID,
-		SecretKey:  secretKey,
+		SecretKey:  secretKey, // pragma: allowlist secret
 		Admin:      admin,
 		Expire:     expire,
 		httpClient: &http.Client{Timeout: 10 * time.Second},
@@ -58,13 +59,19 @@ func (c *Client) genUserSig(identifier string, expire int) (string, error) {
 		"TLS.time":       currTime,
 	}
 
-	data, _ := json.Marshal(sigDoc)
+	data, err := json.Marshal(sigDoc)
+	if err != nil {
+		return "", fmt.Errorf("failed to marshal sig doc: %w", err)
+	}
 	h := hmac.New(sha256.New, []byte(c.SecretKey))
 	h.Write(data)
 	sig := base64.StdEncoding.EncodeToString(h.Sum(nil))
 
 	sigDoc["TLS.sig"] = sig
-	jsonData, _ := json.Marshal(sigDoc)
+	jsonData, err := json.Marshal(sigDoc)
+	if err != nil {
+		return "", fmt.Errorf("failed to marshal sig doc with signature: %w", err)
+	}
 
 	return base64.StdEncoding.EncodeToString(jsonData), nil
 }
@@ -84,7 +91,16 @@ func (c *Client) request(path string, body interface{}) ([]byte, error) {
 	url := fmt.Sprintf("%s/%s/%s?sdkappid=%d&identifier=%s&usersig=%s&random=%d&contenttype=json",
 		baseURL, version, path, c.AppID, c.Admin, c.userSig, rand.Intn(4294967294))
 
-	resp, err := c.httpClient.Post(url, "application/json", bytes.NewBuffer(jsonBody))
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	defer cancel()
+
+	req, err := http.NewRequestWithContext(ctx, http.MethodPost, url, bytes.NewBuffer(jsonBody))
+	if err != nil {
+		return nil, fmt.Errorf("failed to create request: %w", err)
+	}
+	req.Header.Set("Content-Type", "application/json")
+
+	resp, err := c.httpClient.Do(req)
 	if err != nil {
 		return nil, err
 	}

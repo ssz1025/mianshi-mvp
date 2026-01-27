@@ -75,7 +75,10 @@ func (s *WechatStrategy) QueryOrder(thirdOrderNo string) (OrderStatus, *time.Tim
 
 	switch resp.Response.TradeState {
 	case wechat.TradeStateSuccess:
-		t, _ := time.Parse(time.RFC3339, resp.Response.SuccessTime)
+		t, err := time.Parse(time.RFC3339, resp.Response.SuccessTime)
+		if err != nil {
+			return StatusSuccess, nil, nil
+		}
 		return StatusSuccess, &t, nil
 	case wechat.TradeStateRefund, wechat.TradeStateClosed, wechat.TradeStateRevoked, wechat.TradeStatePayError:
 		return StatusFail, nil, nil

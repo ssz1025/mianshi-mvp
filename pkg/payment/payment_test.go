@@ -27,7 +27,7 @@ func TestOrderStatus(t *testing.T) {
 func TestAlipayConfig(t *testing.T) {
 	cfg := AlipayConfig{
 		AppID:      "test_app_id",
-		PrivateKey: "test_private_key",
+		PrivateKey: "test_private_key", // pragma: allowlist secret
 		NotifyURL:  "https://example.com/notify",
 		ReturnURL:  "https://example.com/return",
 		IsProd:     false,
@@ -53,20 +53,20 @@ func TestWechatConfig(t *testing.T) {
 
 // MockPaymentStrategy 用于测试的 mock 策略
 type MockPaymentStrategy struct {
-	payType      string
-	createErr    error
-	queryStatus  OrderStatus
-	queryPaidAt  *time.Time
+	payType     string
+	createErr   error
+	queryStatus OrderStatus
+	queryPaidAt *time.Time
 }
 
-func (m *MockPaymentStrategy) CreateOrder(amount Amount, orderNo, subject string) (string, string, error) {
+func (m *MockPaymentStrategy) CreateOrder(_ Amount, orderNo, _ string) (string, string, error) {
 	if m.createErr != nil {
 		return "", "", m.createErr
 	}
 	return "https://pay.example.com/order/" + orderNo, orderNo, nil
 }
 
-func (m *MockPaymentStrategy) QueryOrder(thirdOrderNo string) (OrderStatus, *time.Time, error) {
+func (m *MockPaymentStrategy) QueryOrder(_ string) (OrderStatus, *time.Time, error) {
 	return m.queryStatus, m.queryPaidAt, nil
 }
 
@@ -101,10 +101,10 @@ func TestMockPaymentStrategy(t *testing.T) {
 	assert.Equal(t, "mock", mock.PayType())
 }
 
-func TestPaymentStrategyInterface(t *testing.T) {
+func TestPaymentStrategyInterface(_ *testing.T) {
 	// 验证 AlipayStrategy 实现了接口（编译时检查）
-	var _ PaymentStrategy = (*AlipayStrategy)(nil)
+	var _ Strategy = (*AlipayStrategy)(nil)
 
 	// 验证 WechatStrategy 实现了接口（编译时检查）
-	var _ PaymentStrategy = (*WechatStrategy)(nil)
+	var _ Strategy = (*WechatStrategy)(nil)
 }

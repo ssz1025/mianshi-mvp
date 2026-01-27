@@ -20,8 +20,8 @@ const (
 	StatusError
 )
 
-// PaymentStrategy 支付策略接口
-type PaymentStrategy interface {
+// Strategy 支付策略接口
+type Strategy interface {
 	// CreateOrder 创建支付订单
 	CreateOrder(amount Amount, orderNo string, subject string) (payURL string, thirdOrderNo string, err error)
 	// QueryOrder 查询订单状态
@@ -29,6 +29,12 @@ type PaymentStrategy interface {
 	// PayType 支付类型标识
 	PayType() string
 }
+
+// PaymentStrategy 支付策略接口别名 (保持向后兼容)
+// Deprecated: 请使用 Strategy
+//
+//nolint:revive // keeping for backward compatibility
+type PaymentStrategy = Strategy
 
 // Config 支付配置
 type Config struct {

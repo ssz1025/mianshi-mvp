@@ -43,8 +43,10 @@ func (c *Client) ReadPump(handler func(client *Client, message []byte)) {
 	}()
 
 	c.Conn.SetReadLimit(maxMessageSize)
+	//nolint:errcheck // deadline errors are non-critical for websocket
 	c.Conn.SetReadDeadline(time.Now().Add(pongWait))
 	c.Conn.SetPongHandler(func(string) error {
+		//nolint:errcheck // deadline errors are non-critical for websocket
 		c.Conn.SetReadDeadline(time.Now().Add(pongWait))
 		c.HeartbeatTime = time.Now()
 		return nil
@@ -72,8 +74,10 @@ func (c *Client) WritePump() {
 	for {
 		select {
 		case message, ok := <-c.Send:
+			//nolint:errcheck // deadline errors are non-critical for websocket
 			c.Conn.SetWriteDeadline(time.Now().Add(writeWait))
 			if !ok {
+				//nolint:errcheck // close message errors are non-critical
 				c.Conn.WriteMessage(websocket.CloseMessage, []byte{})
 				return
 			}
@@ -83,6 +87,7 @@ func (c *Client) WritePump() {
 			}
 
 		case <-ticker.C:
+			//nolint:errcheck // deadline errors are non-critical for websocket
 			c.Conn.SetWriteDeadline(time.Now().Add(writeWait))
 			if err := c.Conn.WriteMessage(websocket.PingMessage, nil); err != nil {
 				return

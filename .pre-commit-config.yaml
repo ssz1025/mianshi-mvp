@@ -39,7 +39,7 @@ repos:
 
   # golangci-lint
   - repo: https://github.com/golangci/golangci-lint
-    rev: v1.61.0
+    rev: v2.8.0
     hooks:
       - id: golangci-lint
         name: golangci-lint
@@ -132,8 +132,9 @@ exclude: |
   (?x)^(
       .*\.pb\.go$|
       .*\.gen\.go$|
+      .*wire_gen\.go$|
       vendor/.*|
       .git/.*|
       bin/.*|
-      docs/swagger.*
+      openapi/.*
   )$

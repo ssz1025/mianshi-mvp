@@ -27,9 +27,10 @@ install-tools: ## 安装开发工具
 	go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
 	go install github.com/swaggo/swag/cmd/swag@latest
 	go install github.com/air-verse/air@v1.52.3
+	go install golang.org/x/tools/cmd/goimports@latest
 
 swagger: ## 生成 Swagger 文档
-	swag init -g cmd/server/main.go -o docs --parseDependency --parseInternal
+	swag init -g cmd/server/main.go -o openapi --parseDependency --parseInternal
 
 lint: ## 运行代码检查
 	golangci-lint run ./...
@@ -39,7 +40,7 @@ lint-fix: ## 运行代码检查并自动修复
 
 fmt: ## 格式化代码
 	go fmt ./...
-	goimports -w -local github.com/d60-Lab/gin-template .
+	goimports -w -local $$(go list -m) .
 
 pre-commit: ## 运行 pre-commit 检查所有文件
 	pre-commit run --all-files

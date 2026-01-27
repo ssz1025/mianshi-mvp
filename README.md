@@ -27,6 +27,12 @@
 🔍 **Sentry 监控** - 实时错误追踪和监控
 🔗 **OpenTelemetry** - 分布式追踪支持
 
+### 扩展功能
+
+🔐 **Casbin 权限管理** - RBAC 访问控制，支持数据权限范围
+☁️ **OSS 存储** - 阿里云 OSS 集成，支持 STS 临时凭证
+💉 **Wire 依赖注入** - 编译时依赖注入，零运行时开销
+
 ### 开发工具
 
 🧪 **REST Client** - VS Code 中直接测试 API
@@ -35,36 +41,26 @@
 ⚙️ **EditorConfig** - 统一的编辑器配置
 🤖 **GitHub Actions** - 自动化 CI/CD 流程
 
-> 📖 **详细使用说明请查看**: [高级功能指南](docs/FEATURES.md) | [开发工具指南](docs/DEV_TOOLS.md)
+> 📖 **详细使用说明**: [架构说明](docs/ARCHITECTURE.md) | [功能指南](docs/FEATURES.md) | [开发工具](docs/DEV_TOOLS.md)
 
 ## 项目结构
 
 ```
 gin-template/
-├── cmd/
-│   └── server/
-│       └── main.go           # 应用入口
-├── internal/
-│   ├── api/                  # API 层
-│   │   ├── handler/          # HTTP 处理器
-│   │   ├── middleware/       # 中间件
-│   │   └── router/           # 路由定义
+├── cmd/server/               # 应用入口
+├── internal/                 # 私有应用代码
+│   ├── api/                  # API 层（handler/middleware/router）
 │   ├── service/              # 业务逻辑层
 │   ├── repository/           # 数据访问层
 │   ├── model/                # 数据模型
-│   └── dto/                  # 数据传输对象
-├── pkg/                      # 可复用的公共库
-│   ├── logger/               # 日志工具
-│   ├── jwt/                  # JWT 工具
-│   ├── validator/            # 验证器
-│   ├── response/             # 响应工具
-│   └── database/             # 数据库工具
+│   ├── dto/                  # 数据传输对象
+│   └── infra/                # 基础设施层
+├── pkg/                      # 可复用的公共库（casbin/oss/jwt/...）
+├── openapi/                  # Swagger/OpenAPI 生成物
+├── docs/                     # 技术文档
 ├── config/                   # 配置文件
-│   └── config.yaml
-├── Makefile                  # Make 命令
-├── Dockerfile                # Docker 镜像构建
-├── docker-compose.yml        # Docker Compose 配置
-└── .air.toml                 # Air 热重载配置
+├── migrations/               # 数据库迁移
+└── scripts/                  # 脚本工具
 ```
 
 ## 快速开始
@@ -387,4 +383,3 @@ MIT License
 
 - [Gin 官方文档](https://gin-gonic.com/)
 - [GORM 官方文档](https://gorm.io/)
-- [博客文章：Gin 框架最佳实践](blog.md)

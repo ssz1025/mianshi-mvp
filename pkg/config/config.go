@@ -13,6 +13,19 @@ type Config struct {
 	Pprof    PprofConfig    `mapstructure:"pprof"`
 	Sentry   SentryConfig   `mapstructure:"sentry"`
 	Tracing  TracingConfig  `mapstructure:"tracing"`
+	OSS      OSSConfig      `mapstructure:"oss"`
+}
+
+// OSSConfig 对象存储配置
+type OSSConfig struct {
+	Endpoint        string `mapstructure:"endpoint"`
+	AccessKeyID     string `mapstructure:"access_key_id"`
+	AccessKeySecret string `mapstructure:"access_key_secret"`
+	BucketName      string `mapstructure:"bucket_name"`
+	Region          string `mapstructure:"region"`
+	RoleARN         string `mapstructure:"role_arn"`
+	RoleSession     string `mapstructure:"role_session"`
+	CDNURL          string `mapstructure:"cdn_url"`
 }
 
 // ServerConfig 服务器配置

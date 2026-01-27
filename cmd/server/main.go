@@ -13,13 +13,10 @@ import (
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
 
-	"github.com/d60-Lab/gin-template/internal/api/handler"
 	"github.com/d60-Lab/gin-template/internal/api/middleware"
 	"github.com/d60-Lab/gin-template/internal/api/router"
-	"github.com/d60-Lab/gin-template/internal/repository"
-	"github.com/d60-Lab/gin-template/internal/service"
+	"github.com/d60-Lab/gin-template/internal/wire"
 	"github.com/d60-Lab/gin-template/pkg/config"
-	"github.com/d60-Lab/gin-template/pkg/database"
 	"github.com/d60-Lab/gin-template/pkg/logger"
 	"github.com/d60-Lab/gin-template/pkg/validator"
 )
@@ -99,27 +96,18 @@ func main() {
 	// 初始化自定义验证器
 	validator.Init()
 
-	// 初始化数据库
-	db, err := database.InitDB(cfg)
+	// 使用 Wire 初始化应用（自动注入所有依赖）
+	app, err := wire.InitializeApp()
 	if err != nil {
-		logger.Fatal("Failed to init database", zap.Error(err))
+		logger.Fatal("Failed to initialize app", zap.Error(err))
 	}
-
-	// 初始化仓储层
-	userRepo := repository.NewUserRepository(db)
-
-	// 初始化服务层
-	userService := service.NewUserService(userRepo, cfg)
-
-	// 初始化处理器
-	h := handler.NewHandler(userService)
 
 	// 设置 Gin 模式
 	gin.SetMode(cfg.Server.Mode)
 
 	// 创建路由
 	r := gin.New()
-	router.Setup(r, h, cfg)
+	router.Setup(r, app.Handler, cfg)
 
 	// 创建 HTTP 服务器
 	srv := &http.Server{

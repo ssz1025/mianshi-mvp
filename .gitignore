@@ -33,4 +33,8 @@ config/config.yaml
 # Editor/IDE
 # .idea/
 # .vscode/
+
+# Build and temp directories
 server
+tmp/
+bin/

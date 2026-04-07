@@ -27,10 +27,6 @@
   "gopls": {
     "ui.semanticTokens": true,
     "ui.completion.usePlaceholders": true,
-    "analyses": {
-      "unusedparams": true,
-      "shadow": true
-    },
     "staticcheck": true
   },
 

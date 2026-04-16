@@ -176,6 +176,37 @@ func (h *Handler) Login(c *gin.Context) {
 	response.Success(c, loginResp)
 }
 
+// GetCurrentUser 获取当前登录用户
+// @Summary 获取当前登录用户
+// @Description 获取当前登录用户的信息（需要认证）
+// @Tags 认证
+// @Accept json
+// @Produce json
+// @Security Bearer
+// @Success 200 {object} response.Response{data=dto.UserResponse}
+// @Failure 401 {object} response.Response
+// @Failure 500 {object} response.Response
+// @Router /api/v1/auth/me [get]
+func (h *Handler) GetCurrentUser(c *gin.Context) {
+	userID := middleware.GetUserID(c)
+	if userID == 0 {
+		response.Unauthorized(c)
+		return
+	}
+
+	user, err := h.userService.GetByID(c.Request.Context(), userID)
+	if err != nil {
+		if err == service.ErrUserNotFound {
+			response.NotFound(c, "user not found")
+			return
+		}
+		response.InternalError(c, err)
+		return
+	}
+
+	response.Success(c, user)
+}
+
 // ListUsers 获取用户列表
 // @Summary 获取用户列表
 // @Description 获取用户列表（分页）

@@ -43,6 +43,7 @@ func Setup(h *handler.Handler, aiHandler *handler.AIHandler, cfg *config.Config)
 		auth := v1.Group("/auth")
 		{
 			auth.POST("/login", middleware.Validation(&dto.LoginRequest{}), h.Login)
+			auth.GET("/me", middleware.Auth(cfg), h.GetCurrentUser)
 		}
 
 		users := v1.Group("/users")

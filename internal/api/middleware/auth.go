@@ -1,6 +1,7 @@
 package middleware
 
 import (
+	"strconv"
 	"strings"
 
 	"github.com/gin-gonic/gin"
@@ -31,10 +32,24 @@ func Auth(cfg *config.Config) gin.HandlerFunc {
 		}
 
 		// 将用户信息存入上下文
-		c.Set("userID", claims.UserID)
+		userIDInt, _ := strconv.ParseInt(claims.UserID, 10, 64)
+		c.Set("userID", userIDInt)
 		c.Set("username", claims.Username)
 		c.Next()
 	}
+}
+
+// GetUserID 获取当前用户ID
+func GetUserID(c *gin.Context) int64 {
+	userID, exists := c.Get("userID")
+	if !exists {
+		return 0
+	}
+	id, ok := userID.(int64)
+	if !ok {
+		return 0
+	}
+	return id
 }
 
 // AdminOnly 管理员权限中间件

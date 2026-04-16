@@ -1,0 +1,166 @@
+
+2026/04/17 06:37:31 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/pkg/database/database.go:51
+[0m[33m[0.290ms] [34;1m[rows:0][0m SET search_path TO public
+
+2026/04/17 06:37:31 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/pkg/database/database.go:56
+[0m[33m[4.811ms] [34;1m[rows:1][0m SELECT count(*) FROM information_schema.tables WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'user' AND table_type = 'BASE TABLE'
+
+2026/04/17 06:37:31 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/pkg/database/database.go:56
+[0m[33m[0.286ms] [34;1m[rows:1][0m SELECT CURRENT_DATABASE()
+
+2026/04/17 06:37:31 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/pkg/database/database.go:56
+[0m[33m[9.953ms] [34;1m[rows:-][0m SELECT c.column_name, c.is_nullable = 'YES', c.udt_name, c.character_maximum_length, c.numeric_precision, c.numeric_precision_radix, c.numeric_scale, c.datetime_precision, 8 * typlen, c.column_default, pd.description, c.identity_increment FROM information_schema.columns AS c JOIN pg_type AS pgt ON c.udt_name = pgt.typname LEFT JOIN pg_catalog.pg_description as pd ON pd.objsubid = c.ordinal_position AND pd.objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = c.table_name AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = c.table_schema)) where table_catalog = 'postgres' AND table_schema = CURRENT_SCHEMA() AND table_name = 'user'
+
+2026/04/17 06:37:31 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/pkg/database/database.go:56
+[0m[33m[0.658ms] [34;1m[rows:-][0m SELECT * FROM "user" LIMIT 5
+
+2026/04/17 06:37:31 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/pkg/database/database.go:56
+[0m[33m[6.973ms] [34;1m[rows:-][0m SELECT constraint_name FROM information_schema.table_constraints tc JOIN information_schema.constraint_column_usage AS ccu USING (constraint_schema, constraint_catalog, table_name, constraint_name) JOIN information_schema.columns AS c ON c.table_schema = tc.constraint_schema AND tc.table_name = c.table_name AND ccu.column_name = c.column_name WHERE constraint_type IN ('PRIMARY KEY', 'UNIQUE') AND c.table_catalog = 'postgres' AND c.table_schema = CURRENT_SCHEMA() AND c.table_name = 'user' AND constraint_type = 'UNIQUE'
+
+2026/04/17 06:37:31 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/pkg/database/database.go:56
+[0m[33m[6.452ms] [34;1m[rows:-][0m SELECT c.column_name, constraint_name, constraint_type FROM information_schema.table_constraints tc JOIN information_schema.constraint_column_usage AS ccu USING (constraint_schema, constraint_catalog, table_name, constraint_name) JOIN information_schema.columns AS c ON c.table_schema = tc.constraint_schema AND tc.table_name = c.table_name AND ccu.column_name = c.column_name WHERE constraint_type IN ('PRIMARY KEY', 'UNIQUE') AND c.table_catalog = 'postgres' AND c.table_schema = CURRENT_SCHEMA() AND c.table_name = 'user'
+
+2026/04/17 06:37:31 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/pkg/database/database.go:56
+[0m[33m[0.876ms] [34;1m[rows:-][0m SELECT a.attname as column_name, format_type(a.atttypid, a.atttypmod) AS data_type
+		FROM pg_attribute a JOIN pg_class b ON a.attrelid = b.oid AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA())
+		WHERE a.attnum > 0 -- hide internal columns
+		AND NOT a.attisdropped -- hide deleted columns
+		AND b.relname = 'user'
+
+2026/04/17 06:37:31 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/pkg/database/database.go:56
+[0m[33m[2.330ms] [34;1m[rows:0][0m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'user' AND column_name = 'id') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'user' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))
+
+2026/04/17 06:37:31 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/pkg/database/database.go:56
+[0m[33m[1.497ms] [34;1m[rows:0][0m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'user' AND column_name = 'username') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'user' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))
+
+2026/04/17 06:37:31 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/pkg/database/database.go:56
+[0m[33m[1.496ms] [34;1m[rows:0][0m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'user' AND column_name = 'nickname') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'user' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))
+
+2026/04/17 06:37:31 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/pkg/database/database.go:56
+[0m[33m[1.519ms] [34;1m[rows:0][0m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'user' AND column_name = 'avatar') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'user' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))
+
+2026/04/17 06:37:31 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/pkg/database/database.go:56
+[0m[33m[2.016ms] [34;1m[rows:0][0m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'user' AND column_name = 'password') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'user' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))
+
+2026/04/17 06:37:31 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/pkg/database/database.go:56
+[0m[33m[1.498ms] [34;1m[rows:0][0m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'user' AND column_name = 'phone') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'user' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))
+
+2026/04/17 06:37:31 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/pkg/database/database.go:56
+[0m[33m[0.242ms] [34;1m[rows:0][0m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'user' AND column_name = 'open_id') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'user' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))
+
+2026/04/17 06:37:31 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/pkg/database/database.go:56
+[0m[33m[0.234ms] [34;1m[rows:0][0m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'user' AND column_name = 'is_vip') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'user' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))
+
+2026/04/17 06:37:31 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/pkg/database/database.go:56
+[0m[33m[0.209ms] [34;1m[rows:0][0m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'user' AND column_name = 'vip_expire_time') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'user' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))
+
+2026/04/17 06:37:31 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/pkg/database/database.go:56
+[0m[33m[0.230ms] [34;1m[rows:0][0m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'user' AND column_name = 'integral') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'user' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))
+
+2026/04/17 06:37:31 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/pkg/database/database.go:56
+[0m[33m[0.217ms] [34;1m[rows:0][0m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'user' AND column_name = 'is_deleted') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'user' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))
+
+2026/04/17 06:37:31 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/pkg/database/database.go:56
+[0m[33m[0.188ms] [34;1m[rows:0][0m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'user' AND column_name = 'create_time') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'user' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))
+
+2026/04/17 06:37:31 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/pkg/database/database.go:56
+[0m[33m[0.193ms] [34;1m[rows:0][0m SELECT description FROM pg_catalog.pg_description WHERE objsubid = (SELECT ordinal_position FROM information_schema.columns WHERE table_schema = CURRENT_SCHEMA() AND table_name = 'user' AND column_name = 'update_time') AND objoid = (SELECT oid FROM pg_catalog.pg_class WHERE relname = 'user' AND relnamespace = (SELECT oid FROM pg_catalog.pg_namespace WHERE nspname = CURRENT_SCHEMA()))
+
+2026/04/17 06:37:31 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/pkg/database/database.go:56
+[0m[33m[1.790ms] [34;1m[rows:1][0m SELECT count(*) FROM pg_indexes WHERE tablename = 'user' AND indexname = 'idx_user_username' AND schemaname = CURRENT_SCHEMA()
+
+2026/04/17 06:37:31 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/pkg/database/database.go:56
+[0m[33m[0.515ms] [34;1m[rows:1][0m SELECT count(*) FROM pg_indexes WHERE tablename = 'user' AND indexname = 'idx_user_phone' AND schemaname = CURRENT_SCHEMA()
+
+2026/04/17 06:37:31 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/pkg/database/database.go:56
+[0m[33m[0.512ms] [34;1m[rows:1][0m SELECT count(*) FROM pg_indexes WHERE tablename = 'user' AND indexname = 'idx_user_openid' AND schemaname = CURRENT_SCHEMA()
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /swagger/*any             --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (6 handlers)
+[GIN-debug] GET    /health                   --> github.com/d60-Lab/gin-template/internal/api/handler.(*Handler).HealthCheck-fm (6 handlers)
+[GIN-debug] POST   /api/v1/auth/login        --> github.com/d60-Lab/gin-template/internal/api/handler.(*Handler).Login-fm (7 handlers)
+[GIN-debug] GET    /api/v1/auth/me           --> github.com/d60-Lab/gin-template/internal/api/handler.(*Handler).GetCurrentUser-fm (7 handlers)
+[GIN-debug] POST   /api/v1/users             --> github.com/d60-Lab/gin-template/internal/api/handler.(*Handler).CreateUser-fm (7 handlers)
+[GIN-debug] GET    /api/v1/users             --> github.com/d60-Lab/gin-template/internal/api/handler.(*Handler).ListUsers-fm (7 handlers)
+[GIN-debug] GET    /api/v1/users/:id         --> github.com/d60-Lab/gin-template/internal/api/handler.(*Handler).GetUser-fm (7 handlers)
+[GIN-debug] PUT    /api/v1/users/:id         --> github.com/d60-Lab/gin-template/internal/api/handler.(*Handler).UpdateUser-fm (8 handlers)
+[GIN-debug] DELETE /api/v1/users/:id         --> github.com/d60-Lab/gin-template/internal/api/handler.(*Handler).DeleteUser-fm (9 handlers)
+[GIN-debug] POST   /api/v1/ai/verify         --> github.com/d60-Lab/gin-template/internal/api/handler.(*AIHandler).Verify-fm (7 handlers)
+2026/04/17 06:37:31 Server starting on port 8080
+[GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+[GIN-debug] Listening and serving HTTP on :8080
+2026-04-17T06:37:46.236+0800	[34mINFO[0m	logger/logger.go:44	request	{"method": "GET", "path": "/health", "query": "", "status": 200, "latency": "102.666µs", "ip": "::1"}
+
+2026/04/17 06:37:46 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/user_repository.go:48
+[0m[33m[1.300ms] [34;1m[rows:1][0m SELECT * FROM "user" WHERE username = 'testuser' ORDER BY "user"."id" LIMIT 1
+2026-04-17T06:37:47.289+0800	[34mINFO[0m	logger/logger.go:44	request	{"method": "POST", "path": "/api/v1/auth/login", "query": "", "status": 200, "latency": "1.038114333s", "ip": "::1"}
+
+2026/04/17 06:37:53 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/user_repository.go:36
+[0m[33m[0.914ms] [34;1m[rows:1][0m SELECT * FROM "user" WHERE id = 15 ORDER BY "user"."id" LIMIT 1
+2026-04-17T06:37:53.129+0800	[34mINFO[0m	logger/logger.go:44	request	{"method": "GET", "path": "/api/v1/auth/me", "query": "", "status": 200, "latency": "1.292125ms", "ip": "::1"}
+2026-04-17T06:40:23.681+0800	[34mINFO[0m	logger/logger.go:44	request	{"method": "GET", "path": "/api/v1/health", "query": "", "status": 404, "latency": "1.084µs", "ip": "::1"}
+
+2026/04/17 06:40:37 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/user_repository.go:48
+[0m[33m[1.177ms] [34;1m[rows:1][0m SELECT * FROM "user" WHERE username = 'testuser' ORDER BY "user"."id" LIMIT 1
+2026-04-17T06:40:38.678+0800	[34mINFO[0m	logger/logger.go:44	request	{"method": "POST", "path": "/api/v1/auth/login", "query": "", "status": 200, "latency": "1.031999375s", "ip": "::1"}
+
+2026/04/17 06:40:45 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/user_repository.go:36
+[0m[33m[0.432ms] [34;1m[rows:1][0m SELECT * FROM "user" WHERE id = 15 ORDER BY "user"."id" LIMIT 1
+2026-04-17T06:40:45.873+0800	[34mINFO[0m	logger/logger.go:44	request	{"method": "GET", "path": "/api/v1/auth/me", "query": "", "status": 200, "latency": "630.083µs", "ip": "::1"}
+
+2026/04/17 06:41:07 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/user_repository.go:36
+[0m[33m[0.569ms] [34;1m[rows:1][0m SELECT * FROM "user" WHERE id = 15 ORDER BY "user"."id" LIMIT 1
+2026-04-17T06:41:07.350+0800	[34mINFO[0m	logger/logger.go:44	request	{"method": "GET", "path": "/api/v1/auth/me", "query": "", "status": 200, "latency": "1.060166ms", "ip": "::1"}
+
+2026/04/17 06:41:07 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/user_repository.go:36
+[0m[33m[0.488ms] [34;1m[rows:1][0m SELECT * FROM "user" WHERE id = 15 ORDER BY "user"."id" LIMIT 1
+2026-04-17T06:41:07.353+0800	[34mINFO[0m	logger/logger.go:44	request	{"method": "GET", "path": "/api/v1/auth/me", "query": "", "status": 200, "latency": "934.75µs", "ip": "::1"}
+
+2026/04/17 06:41:42 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/user_repository.go:36
+[0m[33m[0.450ms] [34;1m[rows:1][0m SELECT * FROM "user" WHERE id = 15 ORDER BY "user"."id" LIMIT 1
+
+2026/04/17 06:41:42 [31;1m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/user_repository.go:59 [35;1m错误: 重复键违反唯一约束"idx_user_phone" (SQLSTATE 23505)
+[0m[33m[7.910ms] [34;1m[rows:0][0m UPDATE "user" SET "username"='testuser',"nickname"='测试用户123',"avatar"='',"password"='$2a$14$JB5lNw2KbhLnEXivoh33IuUWWpwuD1VO6kcM8SulmRaYgxvhhVNca',"phone"='',"open_id"=NULL,"is_vip"=false,"vip_expire_time"='0000-00-00 00:00:00',"integral"=0,"is_deleted"=false,"create_time"='2026-04-16 23:32:11.969',"update_time"='2026-04-17 06:41:42.42' WHERE "id" = 15
+2026-04-17T06:41:42.428+0800	[34mINFO[0m	logger/logger.go:44	request	{"method": "PUT", "path": "/api/v1/users/15", "query": "", "status": 200, "latency": "9.053042ms", "ip": "::1"}
+
+2026/04/17 06:44:37 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/user_repository.go:36
+[0m[33m[10.982ms] [34;1m[rows:1][0m SELECT * FROM "user" WHERE id = 16 ORDER BY "user"."id" LIMIT 1
+2026-04-17T06:44:37.850+0800	[34mINFO[0m	logger/logger.go:44	request	{"method": "GET", "path": "/api/v1/auth/me", "query": "", "status": 200, "latency": "11.632166ms", "ip": "::1"}
+
+2026/04/17 06:44:37 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/user_repository.go:36
+[0m[33m[0.479ms] [34;1m[rows:1][0m SELECT * FROM "user" WHERE id = 16 ORDER BY "user"."id" LIMIT 1
+2026-04-17T06:44:37.855+0800	[34mINFO[0m	logger/logger.go:44	request	{"method": "GET", "path": "/api/v1/auth/me", "query": "", "status": 200, "latency": "721.375µs", "ip": "::1"}
+
+2026/04/17 06:45:08 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/user_repository.go:36
+[0m[33m[1.126ms] [34;1m[rows:1][0m SELECT * FROM "user" WHERE id = 16 ORDER BY "user"."id" LIMIT 1
+
+2026/04/17 06:45:08 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/user_repository.go:59
+[0m[33m[3.878ms] [34;1m[rows:1][0m UPDATE "user" SET "username"='ssz',"nickname"='ssz昵称',"avatar"='',"password"='$2a$14$c9X3aHzYgC5RiHe.uPGcxexfWVV9ZYfgeQEV3MYlHjYutLvynkUSW',"phone"='手机号',"open_id"=NULL,"is_vip"=false,"vip_expire_time"='0000-00-00 00:00:00',"integral"=0,"is_deleted"=false,"create_time"='2026-04-16 23:38:36.861',"update_time"='2026-04-17 06:45:08.291' WHERE "id" = 16
+2026-04-17T06:45:08.295+0800	[34mINFO[0m	logger/logger.go:44	request	{"method": "PUT", "path": "/api/v1/users/16", "query": "", "status": 200, "latency": "5.904958ms", "ip": "::1"}
+
+2026/04/17 06:45:08 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/user_repository.go:36
+[0m[33m[0.826ms] [34;1m[rows:1][0m SELECT * FROM "user" WHERE id = 16 ORDER BY "user"."id" LIMIT 1
+2026-04-17T06:45:08.308+0800	[34mINFO[0m	logger/logger.go:44	request	{"method": "GET", "path": "/api/v1/auth/me", "query": "", "status": 200, "latency": "1.390625ms", "ip": "::1"}
+
+2026/04/17 06:45:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/user_repository.go:36
+[0m[33m[0.642ms] [34;1m[rows:1][0m SELECT * FROM "user" WHERE id = 16 ORDER BY "user"."id" LIMIT 1
+2026-04-17T06:45:48.494+0800	[34mINFO[0m	logger/logger.go:44	request	{"method": "GET", "path": "/api/v1/auth/me", "query": "", "status": 200, "latency": "980µs", "ip": "::1"}
+
+2026/04/17 06:45:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/user_repository.go:36
+[0m[33m[0.739ms] [34;1m[rows:1][0m SELECT * FROM "user" WHERE id = 16 ORDER BY "user"."id" LIMIT 1
+2026-04-17T06:45:48.501+0800	[34mINFO[0m	logger/logger.go:44	request	{"method": "GET", "path": "/api/v1/auth/me", "query": "", "status": 200, "latency": "1.565333ms", "ip": "::1"}
+
+2026/04/17 06:46:19 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/user_repository.go:48
+[0m[33m[1.844ms] [34;1m[rows:1][0m SELECT * FROM "user" WHERE username = 'ssz' ORDER BY "user"."id" LIMIT 1
+2026-04-17T06:46:20.952+0800	[34mINFO[0m	logger/logger.go:44	request	{"method": "POST", "path": "/api/v1/auth/login", "query": "", "status": 200, "latency": "1.045150333s", "ip": "::1"}
+
+2026/04/17 06:46:27 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/user_repository.go:36
+[0m[33m[0.525ms] [34;1m[rows:1][0m SELECT * FROM "user" WHERE id = 16 ORDER BY "user"."id" LIMIT 1
+2026-04-17T06:46:27.910+0800	[34mINFO[0m	logger/logger.go:44	request	{"method": "GET", "path": "/api/v1/auth/me", "query": "", "status": 200, "latency": "1.173333ms", "ip": "::1"}
+
+2026/04/17 06:46:27 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/user_repository.go:36
+[0m[33m[0.288ms] [34;1m[rows:1][0m SELECT * FROM "user" WHERE id = 16 ORDER BY "user"."id" LIMIT 1
+2026-04-17T06:46:27.915+0800	[34mINFO[0m	logger/logger.go:44	request	{"method": "GET", "path": "/api/v1/auth/me", "query": "", "status": 200, "latency": "489.875µs", "ip": "::1"}

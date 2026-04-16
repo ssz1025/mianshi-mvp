@@ -64,9 +64,13 @@ func (s *userService) Create(ctx context.Context, req *dto.CreateUserRequest) (*
 		Username: req.Username,
 		Nickname: req.Nickname,
 		Avatar:   req.Avatar,
-		Password: hashedPassword, // pragma: allowlist secret
-		Phone:    req.Phone,
-		OpenID:   req.OpenID,
+		Password: hashedPassword,
+	}
+	if req.Phone != "" {
+		user.Phone = &req.Phone
+	}
+	if req.OpenID != "" {
+		user.OpenID = &req.OpenID
 	}
 
 	if err := s.userRepo.Create(ctx, user); err != nil {
@@ -107,10 +111,10 @@ func (s *userService) Update(ctx context.Context, id int64, req *dto.UpdateUserR
 		user.Avatar = *req.Avatar
 	}
 	if req.Phone != nil {
-		user.Phone = *req.Phone
+		user.Phone = req.Phone
 	}
 	if req.OpenID != nil {
-		user.OpenID = *req.OpenID
+		user.OpenID = req.OpenID
 	}
 	if req.IsVIP != nil {
 		user.IsVIP = *req.IsVIP
@@ -187,13 +191,21 @@ func (s *userService) List(ctx context.Context, page, pageSize int) ([]*dto.User
 }
 
 func (s *userService) toUserResponse(user *model.User) *dto.UserResponse {
+	var phone string
+	if user.Phone != nil {
+		phone = *user.Phone
+	}
+	var openID string
+	if user.OpenID != nil {
+		openID = *user.OpenID
+	}
 	return &dto.UserResponse{
 		ID:            user.ID,
 		Username:      user.Username,
 		Nickname:      user.Nickname,
 		Avatar:        user.Avatar,
-		Phone:         user.Phone,
-		OpenID:        user.OpenID,
+		Phone:         phone,
+		OpenID:       openID,
 		IsVIP:         user.IsVIP,
 		VIPExpireTime: user.VIPExpireTime.Format("2006-01-02 15:04:05"),
 		Integral:      user.Integral,

@@ -13,7 +13,7 @@ import (
 	"github.com/d60-Lab/gin-template/pkg/config"
 )
 
-func Setup(h *handler.Handler, cfg *config.Config) *gin.Engine {
+func Setup(h *handler.Handler, aiHandler *handler.AIHandler, cfg *config.Config) *gin.Engine {
 	r := gin.New()
 
 	r.Use(middleware.CORS())
@@ -52,6 +52,11 @@ func Setup(h *handler.Handler, cfg *config.Config) *gin.Engine {
 			users.GET("/:id", middleware.Validation(&dto.GetUserRequest{}), h.GetUser)
 			users.PUT("/:id", middleware.Auth(cfg), middleware.Validation(&dto.UpdateUserRequest{}), h.UpdateUser)
 			users.DELETE("/:id", middleware.Auth(cfg), middleware.AdminOnly(), middleware.Validation(&dto.DeleteUserRequest{}), h.DeleteUser)
+		}
+
+		ai := v1.Group("/ai")
+		{
+			ai.POST("/verify", middleware.Validation(&dto.VerifyRequest{}), aiHandler.Verify)
 		}
 	}
 

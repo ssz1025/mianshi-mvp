@@ -24,6 +24,9 @@ func InitializeApp() (*App, error) {
 		// Handler 层
 		HandlerSet,
 
+		// AI 模型
+		ProvideAIModelClients,
+
 		// App 结构
 		NewApp,
 	)

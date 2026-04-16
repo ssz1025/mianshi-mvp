@@ -24,8 +24,11 @@ func InitializeApp() (*App, error) {
 	}
 	userRepository := ProvideUserRepository(db)
 	userService := ProvideUserService(userRepository, config)
+	modelClients := ProvideAIModelClients()
+	aiService := ProvideAIService(modelClients)
 	handler := ProvideHandler(userService)
-	app := NewApp(handler)
+	aiHandler := ProvideAIHandler(aiService)
+	app := NewApp(handler, aiHandler)
 	return app, nil
 }
 
@@ -33,10 +36,11 @@ func InitializeApp() (*App, error) {
 
 // App 应用容器
 type App struct {
-	Handler *handler.Handler
+	Handler   *handler.Handler
+	AIHandler *handler.AIHandler
 }
 
 // NewApp 创建 App 实例
-func NewApp(h *handler.Handler) *App {
-	return &App{Handler: h}
+func NewApp(h *handler.Handler, aiH *handler.AIHandler) *App {
+	return &App{Handler: h, AIHandler: aiH}
 }

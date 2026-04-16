@@ -13,46 +13,38 @@ import (
 	"github.com/d60-Lab/gin-template/pkg/config"
 )
 
-// Setup 设置路由
-func Setup(r *gin.Engine, h *handler.Handler, cfg *config.Config) {
-	// 全局中间件
+func Setup(h *handler.Handler, cfg *config.Config) *gin.Engine {
+	r := gin.New()
+
 	r.Use(middleware.CORS())
 	r.Use(middleware.SecurityHeaders())
 	r.Use(middleware.Logger())
 	r.Use(middleware.Recovery())
 	r.Use(gzip.Gzip(gzip.DefaultCompression))
 
-	// 可选的 Sentry 中间件
 	if cfg.Sentry.Enabled {
 		r.Use(middleware.Sentry())
 	}
 
-	// 可选的 OpenTelemetry 中间件
 	if cfg.Tracing.Enabled {
 		r.Use(middleware.Tracing(cfg.Tracing.ServiceName))
 	}
 
-	// 可选的 Pprof 性能分析
 	if cfg.Pprof.Enabled {
 		middleware.Pprof(r)
 	}
 
-	// Swagger 文档
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
-	// 健康检查
 	r.GET("/health", h.HealthCheck)
 
-	// API 版本分组
 	v1 := r.Group("/api/v1")
 	{
-		// 认证相关
 		auth := v1.Group("/auth")
 		{
 			auth.POST("/login", middleware.Validation(&dto.LoginRequest{}), h.Login)
 		}
 
-		// 用户模块
 		users := v1.Group("/users")
 		{
 			users.POST("", middleware.Validation(&dto.CreateUserRequest{}), h.CreateUser)
@@ -62,4 +54,6 @@ func Setup(r *gin.Engine, h *handler.Handler, cfg *config.Config) {
 			users.DELETE("/:id", middleware.Auth(cfg), middleware.AdminOnly(), middleware.Validation(&dto.DeleteUserRequest{}), h.DeleteUser)
 		}
 	}
+
+	return r
 }

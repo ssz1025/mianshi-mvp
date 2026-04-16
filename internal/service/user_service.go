@@ -3,8 +3,8 @@ package service
 import (
 	"context"
 	"errors"
+	"time"
 
-	"github.com/google/uuid"
 	"golang.org/x/crypto/bcrypt"
 
 	"github.com/d60-Lab/gin-template/internal/dto"
@@ -23,9 +23,9 @@ var (
 // UserService 用户服务接口
 type UserService interface {
 	Create(ctx context.Context, req *dto.CreateUserRequest) (*dto.UserResponse, error)
-	GetByID(ctx context.Context, id string) (*dto.UserResponse, error)
-	Update(ctx context.Context, id string, req *dto.UpdateUserRequest) (*dto.UserResponse, error)
-	Delete(ctx context.Context, id string) error
+	GetByID(ctx context.Context, id int64) (*dto.UserResponse, error)
+	Update(ctx context.Context, id int64, req *dto.UpdateUserRequest) (*dto.UserResponse, error)
+	Delete(ctx context.Context, id int64) error
 	Login(ctx context.Context, req *dto.LoginRequest) (*dto.LoginResponse, error)
 	List(ctx context.Context, page, pageSize int) ([]*dto.UserResponse, error)
 }
@@ -53,15 +53,6 @@ func (s *userService) Create(ctx context.Context, req *dto.CreateUserRequest) (*
 		return nil, ErrUserExists
 	}
 
-	// 检查邮箱是否已存在
-	existingUser, err = s.userRepo.GetByEmail(ctx, req.Email)
-	if err != nil {
-		return nil, err
-	}
-	if existingUser != nil {
-		return nil, ErrUserExists
-	}
-
 	// 加密密码
 	hashedPassword, err := hashPassword(req.Password)
 	if err != nil {
@@ -70,11 +61,12 @@ func (s *userService) Create(ctx context.Context, req *dto.CreateUserRequest) (*
 
 	// 创建用户
 	user := &model.User{
-		ID:       uuid.New().String(),
 		Username: req.Username,
-		Email:    req.Email,
+		Nickname: req.Nickname,
+		Avatar:   req.Avatar,
 		Password: hashedPassword, // pragma: allowlist secret
-		Age:      req.Age,
+		Phone:    req.Phone,
+		OpenID:   req.OpenID,
 	}
 
 	if err := s.userRepo.Create(ctx, user); err != nil {
@@ -84,7 +76,7 @@ func (s *userService) Create(ctx context.Context, req *dto.CreateUserRequest) (*
 	return s.toUserResponse(user), nil
 }
 
-func (s *userService) GetByID(ctx context.Context, id string) (*dto.UserResponse, error) {
+func (s *userService) GetByID(ctx context.Context, id int64) (*dto.UserResponse, error) {
 	user, err := s.userRepo.GetByID(ctx, id)
 	if err != nil {
 		return nil, err
@@ -95,7 +87,7 @@ func (s *userService) GetByID(ctx context.Context, id string) (*dto.UserResponse
 	return s.toUserResponse(user), nil
 }
 
-func (s *userService) Update(ctx context.Context, id string, req *dto.UpdateUserRequest) (*dto.UserResponse, error) {
+func (s *userService) Update(ctx context.Context, id int64, req *dto.UpdateUserRequest) (*dto.UserResponse, error) {
 	user, err := s.userRepo.GetByID(ctx, id)
 	if err != nil {
 		return nil, err
@@ -108,11 +100,29 @@ func (s *userService) Update(ctx context.Context, id string, req *dto.UpdateUser
 	if req.Username != nil {
 		user.Username = *req.Username
 	}
-	if req.Email != nil {
-		user.Email = *req.Email
+	if req.Nickname != nil {
+		user.Nickname = *req.Nickname
 	}
-	if req.Age != nil {
-		user.Age = *req.Age
+	if req.Avatar != nil {
+		user.Avatar = *req.Avatar
+	}
+	if req.Phone != nil {
+		user.Phone = *req.Phone
+	}
+	if req.OpenID != nil {
+		user.OpenID = *req.OpenID
+	}
+	if req.IsVIP != nil {
+		user.IsVIP = *req.IsVIP
+	}
+	if req.VIPExpireTime != nil {
+		expireTime, err := time.Parse(time.RFC3339, *req.VIPExpireTime)
+		if err == nil {
+			user.VIPExpireTime = expireTime
+		}
+	}
+	if req.Integral != nil {
+		user.Integral = *req.Integral
 	}
 
 	if err := s.userRepo.Update(ctx, user); err != nil {
@@ -122,7 +132,7 @@ func (s *userService) Update(ctx context.Context, id string, req *dto.UpdateUser
 	return s.toUserResponse(user), nil
 }
 
-func (s *userService) Delete(ctx context.Context, id string) error {
+func (s *userService) Delete(ctx context.Context, id int64) error {
 	user, err := s.userRepo.GetByID(ctx, id)
 	if err != nil {
 		return err
@@ -178,12 +188,18 @@ func (s *userService) List(ctx context.Context, page, pageSize int) ([]*dto.User
 
 func (s *userService) toUserResponse(user *model.User) *dto.UserResponse {
 	return &dto.UserResponse{
-		ID:        user.ID,
-		Username:  user.Username,
-		Email:     user.Email,
-		Age:       user.Age,
-		CreatedAt: user.CreatedAt.Format("2006-01-02 15:04:05"),
-		UpdatedAt: user.UpdatedAt.Format("2006-01-02 15:04:05"),
+		ID:            user.ID,
+		Username:      user.Username,
+		Nickname:      user.Nickname,
+		Avatar:        user.Avatar,
+		Phone:         user.Phone,
+		OpenID:        user.OpenID,
+		IsVIP:         user.IsVIP,
+		VIPExpireTime: user.VIPExpireTime.Format("2006-01-02 15:04:05"),
+		Integral:      user.Integral,
+		IsDeleted:     user.IsDeleted,
+		CreateTime:    user.CreateTime.Format("2006-01-02 15:04:05"),
+		UpdateTime:    user.UpdateTime.Format("2006-01-02 15:04:05"),
 	}
 }
 

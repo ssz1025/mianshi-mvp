@@ -30,7 +30,8 @@ func InitDB(cfg *config.Config) (*gorm.DB, error) {
 	}
 
 	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{
-		Logger: logger.Default.LogMode(logLevel),
+		Logger:                                   logger.Default.LogMode(logLevel),
+		DisableForeignKeyConstraintWhenMigrating: true,
 	})
 	if err != nil {
 		return nil, err
@@ -45,6 +46,11 @@ func InitDB(cfg *config.Config) (*gorm.DB, error) {
 	sqlDB.SetMaxOpenConns(cfg.Database.MaxOpenConns)
 	sqlDB.SetMaxIdleConns(cfg.Database.MaxIdleConns)
 	sqlDB.SetConnMaxLifetime(time.Duration(cfg.Database.ConnMaxLifetime) * time.Second)
+
+	// 设置 search_path
+	if err := db.Exec("SET search_path TO public").Error; err != nil {
+		return nil, fmt.Errorf("failed to set search_path: %w", err)
+	}
 
 	// 自动迁移
 	if err := db.AutoMigrate(&model.User{}); err != nil {

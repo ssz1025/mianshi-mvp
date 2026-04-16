@@ -3,6 +3,7 @@ package jwt
 import (
 	"errors"
 	"fmt"
+	"strconv"
 	"time"
 
 	"github.com/golang-jwt/jwt/v5"
@@ -23,9 +24,9 @@ type Claims struct {
 }
 
 // GenerateToken 生成 JWT token
-func GenerateToken(userID, username, secret string, expireSeconds int) (string, error) {
+func GenerateToken(userID int64, username, secret string, expireSeconds int) (string, error) {
 	claims := Claims{
-		UserID:   userID,
+		UserID:   strconv.FormatInt(userID, 10),
 		Username: username,
 		RegisteredClaims: jwt.RegisteredClaims{
 			ExpiresAt: jwt.NewNumericDate(time.Now().Add(time.Duration(expireSeconds) * time.Second)),

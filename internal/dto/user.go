@@ -1,29 +1,34 @@
 package dto
 
-// CreateUserRequest 创建用户请求
 type CreateUserRequest struct {
-	Username string `json:"username" binding:"required,username"`
-	Email    string `json:"email" binding:"required,email"`
+	Username string `json:"username" binding:"required"`
+	Nickname string `json:"nickname" binding:"omitempty"`
+	Avatar   string `json:"avatar" binding:"omitempty"`
 	Password string `json:"password" binding:"required,min=6"`
-	Age      int    `json:"age" binding:"omitempty,gte=0,lte=130"`
+	Phone    string `json:"phone" binding:"omitempty"`
+	OpenID   string `json:"openid" binding:"omitempty"`
 }
 
-// UpdateUserRequest 更新用户请求
 type UpdateUserRequest struct {
-	ID       string  `uri:"id" binding:"required"`
-	Username *string `json:"username" binding:"omitempty,username"`
-	Email    *string `json:"email" binding:"omitempty,email"`
-	Age      *int    `json:"age" binding:"omitempty,gte=0,lte=130"`
+	ID            int64     `uri:"id" binding:"required"`
+	Username      *string   `json:"username" binding:"omitempty"`
+	Nickname      *string   `json:"nickname" binding:"omitempty"`
+	Avatar        *string   `json:"avatar" binding:"omitempty"`
+	Phone         *string   `json:"phone" binding:"omitempty"`
+	OpenID        *string   `json:"openid" binding:"omitempty"`
+	IsVIP         *bool     `json:"is_vip" binding:"omitempty"`
+	VIPExpireTime *string   `json:"vip_expire_time" binding:"omitempty"`
+	Integral      *int      `json:"integral" binding:"omitempty,gte=0"`
 }
 
 // GetUserRequest 获取用户请求
 type GetUserRequest struct {
-	ID string `uri:"id" binding:"required"`
+	ID int64 `uri:"id" binding:"required"`
 }
 
 // DeleteUserRequest 删除用户请求
 type DeleteUserRequest struct {
-	ID string `uri:"id" binding:"required"`
+	ID int64 `uri:"id" binding:"required"`
 }
 
 // ListUsersRequest 用户列表请求
@@ -51,16 +56,22 @@ type LoginRequest struct {
 // LoginResponse 登录响应
 type LoginResponse struct {
 	Token    string `json:"token"`
-	UserID   string `json:"user_id"`
+	UserID   int64  `json:"user_id"`
 	Username string `json:"username"`
 }
 
 // UserResponse 用户响应
 type UserResponse struct {
-	ID        string `json:"id"`
-	Username  string `json:"username"`
-	Email     string `json:"email"`
-	Age       int    `json:"age"`
-	CreatedAt string `json:"created_at"`
-	UpdatedAt string `json:"updated_at"`
+	ID            int64  `json:"id"`
+	Username      string `json:"username"`
+	Nickname      string `json:"nickname"`
+	Avatar        string `json:"avatar"`
+	Phone         string `json:"phone"`
+	OpenID        string `json:"openid"`
+	IsVIP         bool   `json:"is_vip"`
+	VIPExpireTime string `json:"vip_expire_time"`
+	Integral      int    `json:"integral"`
+	IsDeleted     bool   `json:"is_deleted"`
+	CreateTime    string `json:"create_time"`
+	UpdateTime    string `json:"update_time"`
 }

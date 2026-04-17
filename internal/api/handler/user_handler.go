@@ -107,7 +107,56 @@ func (h *Handler) GetUser(c *gin.Context) {
 func (h *Handler) UpdateUser(c *gin.Context) {
 	req := middleware.MustGetRequest[dto.UpdateUserRequest](c)
 
+	currentUserID := middleware.GetUserID(c)
+	if currentUserID == 0 {
+		response.Unauthorized(c)
+		return
+	}
+	if currentUserID != req.ID {
+		response.Forbidden(c, "can only update your own profile")
+		return
+	}
+
 	user, err := h.userService.Update(c.Request.Context(), req.ID, req)
+	if err != nil {
+		if err == service.ErrUserNotFound {
+			response.NotFound(c, "user not found")
+			return
+		}
+		response.InternalError(c, err)
+		return
+	}
+
+	response.Success(c, user)
+}
+
+func (h *Handler) UpdateCurrentUser(c *gin.Context) {
+	userID := middleware.GetUserID(c)
+	if userID == 0 {
+		response.Unauthorized(c)
+		return
+	}
+
+	var req dto.UpdateProfileRequest
+	if err := c.ShouldBindJSON(&req); err != nil {
+		response.BadRequest(c, err.Error())
+		return
+	}
+
+	updateReq := &dto.UpdateUserRequest{
+		ID: userID,
+	}
+	if req.Nickname != nil {
+		updateReq.Nickname = req.Nickname
+	}
+	if req.Avatar != nil {
+		updateReq.Avatar = req.Avatar
+	}
+	if req.Phone != nil {
+		updateReq.Phone = req.Phone
+	}
+
+	user, err := h.userService.Update(c.Request.Context(), userID, updateReq)
 	if err != nil {
 		if err == service.ErrUserNotFound {
 			response.NotFound(c, "user not found")
@@ -233,4 +282,45 @@ func (h *Handler) ListUsers(c *gin.Context) {
 		"page_size": req.PageSize,
 		"list":      users,
 	})
+}
+
+func (h *Handler) ChangePassword(c *gin.Context) {
+	req := middleware.MustGetRequest[dto.ChangePasswordRequest](c)
+
+	userID := middleware.GetUserID(c)
+	if userID == 0 {
+		response.Unauthorized(c)
+		return
+	}
+
+	if err := h.userService.ChangePassword(c.Request.Context(), userID, req); err != nil {
+		if err == service.ErrInvalidPassword {
+			response.BadRequest(c, "old password is incorrect")
+			return
+		}
+		if err == service.ErrUserNotFound {
+			response.NotFound(c, "user not found")
+			return
+		}
+		response.InternalError(c, err)
+		return
+	}
+
+	response.Success(c, nil)
+}
+
+func (h *Handler) GetUserStats(c *gin.Context) {
+	userID := middleware.GetUserID(c)
+	if userID == 0 {
+		response.Unauthorized(c)
+		return
+	}
+
+	stats, err := h.userService.GetUserStats(c.Request.Context(), userID)
+	if err != nil {
+		response.InternalError(c, err)
+		return
+	}
+
+	response.Success(c, stats)
 }

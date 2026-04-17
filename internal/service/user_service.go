@@ -28,6 +28,8 @@ type UserService interface {
 	Delete(ctx context.Context, id int64) error
 	Login(ctx context.Context, req *dto.LoginRequest) (*dto.LoginResponse, error)
 	List(ctx context.Context, page, pageSize int) ([]*dto.UserResponse, error)
+	ChangePassword(ctx context.Context, userID int64, req *dto.ChangePasswordRequest) error
+	GetUserStats(ctx context.Context, userID int64) (*dto.UserStatsResponse, error)
 }
 
 type userService struct {
@@ -188,6 +190,54 @@ func (s *userService) List(ctx context.Context, page, pageSize int) ([]*dto.User
 	}
 
 	return responses, nil
+}
+
+func (s *userService) ChangePassword(ctx context.Context, userID int64, req *dto.ChangePasswordRequest) error {
+	user, err := s.userRepo.GetByID(ctx, userID)
+	if err != nil {
+		return err
+	}
+	if user == nil {
+		return ErrUserNotFound
+	}
+
+	if !checkPasswordHash(req.OldPassword, user.Password) {
+		return ErrInvalidPassword
+	}
+
+	hashedPassword, err := hashPassword(req.NewPassword)
+	if err != nil {
+		return err
+	}
+	user.Password = hashedPassword
+
+	return s.userRepo.Update(ctx, user)
+}
+
+func (s *userService) GetUserStats(ctx context.Context, userID int64) (*dto.UserStatsResponse, error) {
+	totalQuestions, err := s.userRepo.CountQuestionRecords(ctx, userID)
+	if err != nil {
+		return nil, err
+	}
+	masterQuestions, err := s.userRepo.CountMasterRecords(ctx, userID)
+	if err != nil {
+		return nil, err
+	}
+	favoriteCount, err := s.userRepo.CountFavorites(ctx, userID)
+	if err != nil {
+		return nil, err
+	}
+	searchCount, err := s.userRepo.CountSearchHistory(ctx, userID)
+	if err != nil {
+		return nil, err
+	}
+
+	return &dto.UserStatsResponse{
+		TotalQuestions:  totalQuestions,
+		MasterQuestions: masterQuestions,
+		FavoriteCount:   favoriteCount,
+		SearchCount:     searchCount,
+	}, nil
 }
 
 func (s *userService) toUserResponse(user *model.User) *dto.UserResponse {

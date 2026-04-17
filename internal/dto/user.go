@@ -10,15 +10,15 @@ type CreateUserRequest struct {
 }
 
 type UpdateUserRequest struct {
-	ID            int64     `uri:"id" binding:"required"`
-	Username      *string   `json:"username" binding:"omitempty"`
-	Nickname      *string   `json:"nickname" binding:"omitempty"`
-	Avatar        *string   `json:"avatar" binding:"omitempty"`
-	Phone         *string   `json:"phone" binding:"omitempty"`
-	OpenID        *string   `json:"openid" binding:"omitempty"`
-	IsVIP         *bool     `json:"is_vip" binding:"omitempty"`
-	VIPExpireTime *string   `json:"vip_expire_time" binding:"omitempty"`
-	Integral      *int      `json:"integral" binding:"omitempty,gte=0"`
+	ID            int64   `uri:"id" binding:"required"`
+	Username      *string `json:"username" binding:"omitempty"`
+	Nickname      *string `json:"nickname" binding:"omitempty"`
+	Avatar        *string `json:"avatar" binding:"omitempty"`
+	Phone         *string `json:"phone" binding:"omitempty"`
+	OpenID        *string `json:"openid" binding:"omitempty"`
+	IsVIP         *bool   `json:"is_vip" binding:"omitempty"`
+	VIPExpireTime *string `json:"vip_expire_time" binding:"omitempty"`
+	Integral      *int    `json:"integral" binding:"omitempty,gte=0"`
 }
 
 // GetUserRequest 获取用户请求
@@ -61,6 +61,24 @@ type LoginResponse struct {
 }
 
 // UserResponse 用户响应
+type ChangePasswordRequest struct {
+	OldPassword string `json:"old_password" binding:"required,min=6"`
+	NewPassword string `json:"new_password" binding:"required,min=6"`
+}
+
+type UpdateProfileRequest struct {
+	Nickname *string `json:"nickname" binding:"omitempty"`
+	Avatar   *string `json:"avatar" binding:"omitempty"`
+	Phone    *string `json:"phone" binding:"omitempty"`
+}
+
+type UserStatsResponse struct {
+	TotalQuestions  int `json:"total_questions"`
+	MasterQuestions int `json:"master_questions"`
+	FavoriteCount   int `json:"favorite_count"`
+	SearchCount     int `json:"search_count"`
+}
+
 type UserResponse struct {
 	ID            int64  `json:"id"`
 	Username      string `json:"username"`

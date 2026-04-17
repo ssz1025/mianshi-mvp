@@ -16,6 +16,10 @@ type UserRepository interface {
 	Update(ctx context.Context, user *model.User) error
 	Delete(ctx context.Context, id int64) error
 	List(ctx context.Context, offset, limit int) ([]*model.User, error)
+	CountQuestionRecords(ctx context.Context, userID int64) (int, error)
+	CountMasterRecords(ctx context.Context, userID int64) (int, error)
+	CountFavorites(ctx context.Context, userID int64) (int, error)
+	CountSearchHistory(ctx context.Context, userID int64) (int, error)
 }
 
 type userRepository struct {
@@ -67,4 +71,28 @@ func (r *userRepository) List(ctx context.Context, offset, limit int) ([]*model.
 	var users []*model.User
 	err := r.db.WithContext(ctx).Offset(offset).Limit(limit).Find(&users).Error
 	return users, err
+}
+
+func (r *userRepository) CountQuestionRecords(ctx context.Context, userID int64) (int, error) {
+	var count int64
+	err := r.db.WithContext(ctx).Table("user_question_record").Where("user_id = ?", userID).Count(&count).Error
+	return int(count), err
+}
+
+func (r *userRepository) CountMasterRecords(ctx context.Context, userID int64) (int, error) {
+	var count int64
+	err := r.db.WithContext(ctx).Table("user_question_record").Where("user_id = ? AND is_master = ?", userID, true).Count(&count).Error
+	return int(count), err
+}
+
+func (r *userRepository) CountFavorites(ctx context.Context, userID int64) (int, error) {
+	var count int64
+	err := r.db.WithContext(ctx).Table("user_favorite").Where("user_id = ?", userID).Count(&count).Error
+	return int(count), err
+}
+
+func (r *userRepository) CountSearchHistory(ctx context.Context, userID int64) (int, error) {
+	var count int64
+	err := r.db.WithContext(ctx).Table("user_search_history").Where("user_id = ?", userID).Count(&count).Error
+	return int(count), err
 }

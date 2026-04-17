@@ -25,7 +25,7 @@ func main() {
 		log.Fatalf("Failed to load config: %v", err)
 	}
 
-	r := router.Setup(app.Handler, app.AIHandler, cfg)
+	r := router.Setup(app.Handler, app.AIHandler, app.PracticeRouteHandler, app.QuestionHandler, cfg)
 	log.Printf("Server starting on port %d", cfg.Server.Port)
 	if err := r.Run(fmt.Sprintf(":%d", cfg.Server.Port)); err != nil {
 		log.Fatalf("Failed to start server: %v", err)

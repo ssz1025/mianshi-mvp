@@ -35,10 +35,13 @@ func InitializeApp() (*App, error) {
 
 // App 应用容器
 type App struct {
-	Handler *handler.Handler
+	Handler              *handler.Handler
+	AIHandler            *handler.AIHandler
+	PracticeRouteHandler *handler.PracticeRouteHandler
+	QuestionHandler      *handler.QuestionHandler
 }
 
 // NewApp 创建 App 实例
-func NewApp(h *handler.Handler) *App {
-	return &App{Handler: h}
+func NewApp(h *handler.Handler, aiH *handler.AIHandler, prH *handler.PracticeRouteHandler, qH *handler.QuestionHandler) *App {
+	return &App{Handler: h, AIHandler: aiH, PracticeRouteHandler: prH, QuestionHandler: qH}
 }

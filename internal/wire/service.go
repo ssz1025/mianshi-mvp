@@ -12,6 +12,8 @@ import (
 var ServiceSet = wire.NewSet(
 	ProvideUserService,
 	ProvideAIService,
+	ProvidePracticeRouteService,
+	ProvideQuestionService,
 )
 
 // ProvideUserService 提供用户服务
@@ -27,4 +29,18 @@ func ProvideAIService(
 	modelClients map[string]service.AIModelClient,
 ) service.AIService {
 	return service.NewAIService(modelClients)
+}
+
+// ProvidePracticeRouteService 提供刷题路线服务
+func ProvidePracticeRouteService(
+	practiceRouteRepo repository.PracticeRouteRepository,
+) service.PracticeRouteService {
+	return service.NewPracticeRouteService(practiceRouteRepo)
+}
+
+// ProvideQuestionService 提供题目服务
+func ProvideQuestionService(
+	questionRepo repository.QuestionRepository,
+) service.QuestionService {
+	return service.NewQuestionService(questionRepo)
 }

@@ -10,9 +10,6 @@ import (
 	"github.com/d60-Lab/gin-template/internal/api/handler"
 )
 
-// Injectors from wire.go:
-
-// InitializeApp 初始化整个应用
 func InitializeApp() (*App, error) {
 	config, err := ProvideConfig()
 	if err != nil {
@@ -26,21 +23,25 @@ func InitializeApp() (*App, error) {
 	userService := ProvideUserService(userRepository, config)
 	modelClients := ProvideAIModelClients()
 	aiService := ProvideAIService(modelClients)
-	handler := ProvideHandler(userService)
+	practiceRouteRepository := ProvidePracticeRouteRepository(db)
+	practiceRouteService := ProvidePracticeRouteService(practiceRouteRepository)
+	questionRepository := ProvideQuestionRepository(db)
+	questionService := ProvideQuestionService(questionRepository)
+	h := ProvideHandler(userService)
 	aiHandler := ProvideAIHandler(aiService)
-	app := NewApp(handler, aiHandler)
+	practiceRouteHandler := ProvidePracticeRouteHandler(practiceRouteService)
+	questionHandler := ProvideQuestionHandler(questionService)
+	app := NewApp(h, aiHandler, practiceRouteHandler, questionHandler)
 	return app, nil
 }
 
-// wire.go:
-
-// App 应用容器
 type App struct {
-	Handler   *handler.Handler
-	AIHandler *handler.AIHandler
+	Handler              *handler.Handler
+	AIHandler            *handler.AIHandler
+	PracticeRouteHandler *handler.PracticeRouteHandler
+	QuestionHandler      *handler.QuestionHandler
 }
 
-// NewApp 创建 App 实例
-func NewApp(h *handler.Handler, aiH *handler.AIHandler) *App {
-	return &App{Handler: h, AIHandler: aiH}
+func NewApp(h *handler.Handler, aiH *handler.AIHandler, prH *handler.PracticeRouteHandler, qH *handler.QuestionHandler) *App {
+	return &App{Handler: h, AIHandler: aiH, PracticeRouteHandler: prH, QuestionHandler: qH}
 }

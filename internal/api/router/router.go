@@ -9,11 +9,11 @@ import (
 	"github.com/d60-Lab/gin-template/internal/api/handler"
 	"github.com/d60-Lab/gin-template/internal/api/middleware"
 	"github.com/d60-Lab/gin-template/internal/dto"
-	_ "github.com/d60-Lab/gin-template/openapi" // swagger docs
+	_ "github.com/d60-Lab/gin-template/openapi"
 	"github.com/d60-Lab/gin-template/pkg/config"
 )
 
-func Setup(h *handler.Handler, aiHandler *handler.AIHandler, cfg *config.Config) *gin.Engine {
+func Setup(h *handler.Handler, aiHandler *handler.AIHandler, prHandler *handler.PracticeRouteHandler, questionHandler *handler.QuestionHandler, cfg *config.Config) *gin.Engine {
 	r := gin.New()
 
 	r.Use(middleware.CORS())
@@ -44,12 +44,15 @@ func Setup(h *handler.Handler, aiHandler *handler.AIHandler, cfg *config.Config)
 		{
 			auth.POST("/login", middleware.Validation(&dto.LoginRequest{}), h.Login)
 			auth.GET("/me", middleware.Auth(cfg), h.GetCurrentUser)
+			auth.PUT("/password", middleware.Auth(cfg), middleware.Validation(&dto.ChangePasswordRequest{}), h.ChangePassword)
+			auth.GET("/stats", middleware.Auth(cfg), h.GetUserStats)
 		}
 
 		users := v1.Group("/users")
 		{
 			users.POST("", middleware.Validation(&dto.CreateUserRequest{}), h.CreateUser)
 			users.GET("", middleware.Validation(&dto.ListUsersRequest{}), h.ListUsers)
+			users.PUT("/me", middleware.Auth(cfg), h.UpdateCurrentUser)
 			users.GET("/:id", middleware.Validation(&dto.GetUserRequest{}), h.GetUser)
 			users.PUT("/:id", middleware.Auth(cfg), middleware.Validation(&dto.UpdateUserRequest{}), h.UpdateUser)
 			users.DELETE("/:id", middleware.Auth(cfg), middleware.AdminOnly(), middleware.Validation(&dto.DeleteUserRequest{}), h.DeleteUser)
@@ -58,6 +61,26 @@ func Setup(h *handler.Handler, aiHandler *handler.AIHandler, cfg *config.Config)
 		ai := v1.Group("/ai")
 		{
 			ai.POST("/verify", middleware.Validation(&dto.VerifyRequest{}), aiHandler.Verify)
+		}
+
+		practiceRoutes := v1.Group("/practice-routes")
+		{
+			practiceRoutes.GET("", prHandler.ListRoutes)
+			practiceRoutes.GET("/:id", prHandler.GetRoute)
+		}
+
+		banks := v1.Group("/banks")
+		{
+			banks.GET("", middleware.Validation(&dto.ListBanksRequest{}), questionHandler.ListBanks)
+			banks.GET("/:id", middleware.Validation(&dto.GetBankRequest{}), questionHandler.GetBank)
+			banks.GET("/:id/questions", middleware.Validation(&dto.ListBankQuestionsRequest{}), questionHandler.ListBankQuestions)
+		}
+
+		questions := v1.Group("/questions")
+		{
+			questions.GET("", middleware.Validation(&dto.ListQuestionsRequest{}), questionHandler.ListQuestions)
+			questions.GET("/hot", middleware.Validation(&dto.HotQuestionsRequest{}), questionHandler.ListHotQuestions)
+			questions.GET("/:id", middleware.Validation(&dto.GetQuestionRequest{}), questionHandler.GetQuestion)
 		}
 	}
 

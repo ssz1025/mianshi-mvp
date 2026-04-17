@@ -159,6 +159,8 @@ func (s *questionService) GetQuestionByID(ctx context.Context, id int64) (*dto.Q
 		ViewCount:        question.ViewCount,
 		StarCount:        question.StarCount,
 		LikeCount:        question.LikeCount,
+		Answer:           question.Answer,
+		Explanation:      question.Explanation,
 		RelatedQuestions: related,
 	}, nil
 }

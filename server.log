@@ -1484,3 +1484,1727 @@ Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-
 2026/04/18 06:42:14 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:47
 [0m[33m[0.467ms] [34;1m[rows:6][0m SELECT * FROM "question_bank" WHERE is_deleted = false ORDER BY sort ASC, id ASC LIMIT 50
 2026-04-18T06:42:14.032+0800	[34mINFO[0m	logger/logger.go:44	request	{"method": "GET", "path": "/api/v1/banks", "query": "page=1&page_size=50", "status": 200, "latency": "2.357042ms", "ip": "::1"}
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:127
+[0m[33m[14.482ms] [34;1m[rows:1][0m SELECT count(*) FROM "question" WHERE question.is_deleted = false
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:127
+[0m[33m[14.600ms] [34;1m[rows:1][0m SELECT count(*) FROM "question" WHERE question.is_deleted = false
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:43
+[0m[33m[14.547ms] [34;1m[rows:1][0m SELECT count(*) FROM "question_bank" WHERE is_deleted = false
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:141
+[0m[33m[1.121ms] [34;1m[rows:15][0m SELECT * FROM "question" WHERE question.is_deleted = false ORDER BY view_count DESC, id ASC LIMIT 30
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:141
+[0m[33m[1.157ms] [34;1m[rows:15][0m SELECT * FROM "question" WHERE question.is_deleted = false ORDER BY view_count DESC, id ASC LIMIT 15
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:47
+[0m[33m[1.088ms] [34;1m[rows:6][0m SELECT * FROM "question_bank" WHERE is_deleted = false ORDER BY sort ASC, id ASC LIMIT 50
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.878ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 1
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.929ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 1
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.203ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 1 LIMIT 1
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.173ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 1 LIMIT 1
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.115ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 2
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.126ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 2
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.109ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 2 LIMIT 1
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.099ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 3
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.115ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 2 LIMIT 1
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.085ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 3 LIMIT 1
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.088ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 3
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.104ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 4
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.089ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 3 LIMIT 1
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.089ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 4 LIMIT 1
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.078ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 4
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.084ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 5
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.087ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 5 LIMIT 1
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.083ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 4 LIMIT 1
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.085ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 6
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.115ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 5
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.085ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 6 LIMIT 1
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.075ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 7
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.190ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 5 LIMIT 1
+2026-04-18T06:43:48.195+0800	[34mINFO[0m	logger/logger.go:44	request	{"method": "GET", "path": "/api/v1/banks", "query": "page=1&page_size=50", "status": 200, "latency": "18.761542ms", "ip": "::1"}
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.177ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 7 LIMIT 1
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.058ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 8
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.182ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 6
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.071ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 8 LIMIT 1
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.052ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 6 LIMIT 1
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.061ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 9
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.101ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 7
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.053ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 9 LIMIT 1
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.104ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 10
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.123ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 7 LIMIT 1
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.070ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 10 LIMIT 1
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.122ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 8
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.054ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 8 LIMIT 1
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.127ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 11
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.066ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 9
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.076ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 11 LIMIT 1
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.073ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 9 LIMIT 1
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.075ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 12
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.074ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 12 LIMIT 1
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.175ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 10
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.194ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 10 LIMIT 1
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.313ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 13
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.110ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 13 LIMIT 1
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.113ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 11
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.130ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 14
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.116ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 11 LIMIT 1
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.124ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 12
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.143ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 14 LIMIT 1
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.079ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 12 LIMIT 1
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.071ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 15
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.108ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 13
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.143ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 15 LIMIT 1
+2026-04-18T06:43:48.197+0800	[34mINFO[0m	logger/logger.go:44	request	{"method": "GET", "path": "/api/v1/questions/hot", "query": "page=1&page_size=15", "status": 200, "latency": "21.036083ms", "ip": "::1"}
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.260ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 13 LIMIT 1
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:43
+[0m[33m[0.619ms] [34;1m[rows:1][0m SELECT count(*) FROM "question_bank" WHERE is_deleted = false
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.147ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 14
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.122ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 14 LIMIT 1
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:47
+[0m[33m[0.266ms] [34;1m[rows:6][0m SELECT * FROM "question_bank" WHERE is_deleted = false ORDER BY sort ASC, id ASC LIMIT 50
+2026-04-18T06:43:48.198+0800	[34mINFO[0m	logger/logger.go:44	request	{"method": "GET", "path": "/api/v1/banks", "query": "page=1&page_size=50", "status": 200, "latency": "1.114959ms", "ip": "::1"}
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:127
+[0m[33m[0.527ms] [34;1m[rows:1][0m SELECT count(*) FROM "question" WHERE question.is_deleted = false
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[4.336ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 15
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:141
+[0m[33m[0.702ms] [34;1m[rows:15][0m SELECT * FROM "question" WHERE question.is_deleted = false ORDER BY view_count DESC, id ASC LIMIT 15
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.160ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 1
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.479ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 15 LIMIT 1
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.250ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 1 LIMIT 1
+2026-04-18T06:43:48.203+0800	[34mINFO[0m	logger/logger.go:44	request	{"method": "GET", "path": "/api/v1/questions", "query": "page=1&page_size=30", "status": 200, "latency": "26.543459ms", "ip": "::1"}
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.129ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 2
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.099ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 2 LIMIT 1
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.089ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 3
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.101ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 3 LIMIT 1
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.244ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 4
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.892ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 4 LIMIT 1
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.236ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 5
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.660ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 5 LIMIT 1
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:127
+[0m[33m[0.473ms] [34;1m[rows:1][0m SELECT count(*) FROM "question" WHERE question.is_deleted = false
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[1.351ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 6
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:141
+[0m[33m[0.937ms] [34;1m[rows:15][0m SELECT * FROM "question" WHERE question.is_deleted = false ORDER BY view_count DESC, id ASC LIMIT 30
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.137ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 1
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.251ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 6 LIMIT 1
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.184ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 1 LIMIT 1
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.127ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 7
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.170ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 7 LIMIT 1
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.204ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 2
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.104ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 8
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.172ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 2 LIMIT 1
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.085ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 8 LIMIT 1
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.161ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 3
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.161ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 9
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.073ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 3 LIMIT 1
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.150ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 9 LIMIT 1
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.093ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 4
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.094ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 4 LIMIT 1
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.124ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 10
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.091ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 10 LIMIT 1
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.213ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 5
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.171ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 11
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.087ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 5 LIMIT 1
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.077ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 6
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.085ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 11 LIMIT 1
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.074ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 6 LIMIT 1
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.084ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 12
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.070ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 12 LIMIT 1
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.161ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 7
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.115ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 13
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.071ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 7 LIMIT 1
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.085ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 13 LIMIT 1
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.114ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 8
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.098ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 14
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.061ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 8 LIMIT 1
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.078ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 14 LIMIT 1
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.084ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 9
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.078ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 15
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.083ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 9 LIMIT 1
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.068ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 15 LIMIT 1
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.102ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 10
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.067ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 10 LIMIT 1
+2026-04-18T06:43:48.210+0800	[34mINFO[0m	logger/logger.go:44	request	{"method": "GET", "path": "/api/v1/questions/hot", "query": "page=1&page_size=15", "status": 200, "latency": "8.787334ms", "ip": "::1"}
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.116ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 11
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.073ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 11 LIMIT 1
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.075ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 12
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.094ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 12 LIMIT 1
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.155ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 13
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.077ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 13 LIMIT 1
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.091ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 14
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.075ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 14 LIMIT 1
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.448ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 15
+
+2026/04/18 06:43:48 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.146ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 15 LIMIT 1
+2026-04-18T06:43:48.211+0800	[34mINFO[0m	logger/logger.go:44	request	{"method": "GET", "path": "/api/v1/questions", "query": "page=1&page_size=30", "status": 200, "latency": "6.139375ms", "ip": "::1"}
+
+2026/04/18 06:43:53 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:127
+[0m[33m[1.071ms] [34;1m[rows:1][0m SELECT count(*) FROM "question" WHERE question.is_deleted = false
+
+2026/04/18 06:43:53 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:141
+[0m[33m[0.888ms] [34;1m[rows:15][0m SELECT * FROM "question" WHERE question.is_deleted = false ORDER BY view_count DESC, id ASC LIMIT 100
+
+2026/04/18 06:43:53 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.276ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 1
+
+2026/04/18 06:43:53 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.125ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 1 LIMIT 1
+
+2026/04/18 06:43:53 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.147ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 2
+
+2026/04/18 06:43:53 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.145ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 2 LIMIT 1
+
+2026/04/18 06:43:53 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.151ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 3
+
+2026/04/18 06:43:53 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.123ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 3 LIMIT 1
+
+2026/04/18 06:43:53 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.162ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 4
+
+2026/04/18 06:43:53 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.196ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 4 LIMIT 1
+
+2026/04/18 06:43:53 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.139ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 5
+
+2026/04/18 06:43:53 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.110ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 5 LIMIT 1
+
+2026/04/18 06:43:53 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.136ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 6
+
+2026/04/18 06:43:53 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.165ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 6 LIMIT 1
+
+2026/04/18 06:43:53 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.150ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 7
+
+2026/04/18 06:43:53 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.161ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 7 LIMIT 1
+
+2026/04/18 06:43:53 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.203ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 8
+
+2026/04/18 06:43:53 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.120ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 8 LIMIT 1
+
+2026/04/18 06:43:53 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.219ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 9
+
+2026/04/18 06:43:53 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.216ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 9 LIMIT 1
+
+2026/04/18 06:43:53 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.161ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 10
+
+2026/04/18 06:43:53 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.146ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 10 LIMIT 1
+
+2026/04/18 06:43:53 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.160ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 11
+
+2026/04/18 06:43:53 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.174ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 11 LIMIT 1
+
+2026/04/18 06:43:53 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.130ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 12
+
+2026/04/18 06:43:53 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.113ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 12 LIMIT 1
+
+2026/04/18 06:43:53 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.167ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 13
+
+2026/04/18 06:43:53 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.161ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 13 LIMIT 1
+
+2026/04/18 06:43:53 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.209ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 14
+
+2026/04/18 06:43:53 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.102ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 14 LIMIT 1
+
+2026/04/18 06:43:53 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.137ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 15
+
+2026/04/18 06:43:53 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.173ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 15 LIMIT 1
+2026-04-18T06:43:53.990+0800	[34mINFO[0m	logger/logger.go:44	request	{"method": "GET", "path": "/api/v1/questions/hot", "query": "sort_by=heat&page=1&page_size=100", "status": 200, "latency": "8.050125ms", "ip": "::1"}
+
+2026/04/18 06:43:53 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:127
+[0m[33m[0.561ms] [34;1m[rows:1][0m SELECT count(*) FROM "question" WHERE question.is_deleted = false
+
+2026/04/18 06:43:53 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:141
+[0m[33m[0.334ms] [34;1m[rows:15][0m SELECT * FROM "question" WHERE question.is_deleted = false ORDER BY view_count DESC, id ASC LIMIT 100
+
+2026/04/18 06:43:53 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.857ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 1
+
+2026/04/18 06:43:53 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.162ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 1 LIMIT 1
+
+2026/04/18 06:43:53 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.160ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 2
+
+2026/04/18 06:43:53 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.109ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 2 LIMIT 1
+
+2026/04/18 06:43:53 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.134ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 3
+
+2026/04/18 06:43:53 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.137ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 3 LIMIT 1
+
+2026/04/18 06:43:53 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.155ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 4
+
+2026/04/18 06:43:53 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.134ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 4 LIMIT 1
+
+2026/04/18 06:43:53 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.151ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 5
+
+2026/04/18 06:43:53 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.130ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 5 LIMIT 1
+
+2026/04/18 06:43:53 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.148ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 6
+
+2026/04/18 06:43:53 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.090ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 6 LIMIT 1
+
+2026/04/18 06:43:53 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.152ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 7
+
+2026/04/18 06:43:53 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.137ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 7 LIMIT 1
+
+2026/04/18 06:43:53 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.150ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 8
+
+2026/04/18 06:43:53 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.158ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 8 LIMIT 1
+
+2026/04/18 06:43:53 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.143ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 9
+
+2026/04/18 06:43:53 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.135ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 9 LIMIT 1
+
+2026/04/18 06:43:53 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.152ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 10
+
+2026/04/18 06:43:53 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.133ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 10 LIMIT 1
+
+2026/04/18 06:43:53 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.182ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 11
+
+2026/04/18 06:43:53 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.131ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 11 LIMIT 1
+
+2026/04/18 06:43:53 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.125ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 12
+
+2026/04/18 06:43:53 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.263ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 12 LIMIT 1
+
+2026/04/18 06:43:53 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.220ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 13
+
+2026/04/18 06:43:53 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.128ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 13 LIMIT 1
+
+2026/04/18 06:43:53 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.140ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 14
+
+2026/04/18 06:43:53 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.151ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 14 LIMIT 1
+
+2026/04/18 06:43:53 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.121ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 15
+
+2026/04/18 06:43:53 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.137ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 15 LIMIT 1
+2026-04-18T06:43:53.999+0800	[34mINFO[0m	logger/logger.go:44	request	{"method": "GET", "path": "/api/v1/questions/hot", "query": "sort_by=heat&page=1&page_size=100", "status": 200, "latency": "7.053208ms", "ip": "::1"}
+
+2026/04/18 06:43:55 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/practice_route_repository.go:35
+[0m[33m[1.622ms] [34;1m[rows:32][0m SELECT * FROM "route_phase" WHERE "route_phase"."route_id" IN (1,2,3,4,5,6,7,8) ORDER BY sort ASC
+
+2026/04/18 06:43:55 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/practice_route_repository.go:35
+[0m[33m[4.997ms] [34;1m[rows:8][0m SELECT * FROM "practice_route" WHERE is_deleted = false ORDER BY sort ASC
+2026-04-18T06:43:55.375+0800	[34mINFO[0m	logger/logger.go:44	request	{"method": "GET", "path": "/api/v1/practice-routes", "query": "", "status": 200, "latency": "5.43275ms", "ip": "::1"}
+
+2026/04/18 06:43:55 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/practice_route_repository.go:35
+[0m[33m[0.372ms] [34;1m[rows:32][0m SELECT * FROM "route_phase" WHERE "route_phase"."route_id" IN (1,2,3,4,5,6,7,8) ORDER BY sort ASC
+
+2026/04/18 06:43:55 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/practice_route_repository.go:35
+[0m[33m[1.137ms] [34;1m[rows:8][0m SELECT * FROM "practice_route" WHERE is_deleted = false ORDER BY sort ASC
+2026-04-18T06:43:55.380+0800	[34mINFO[0m	logger/logger.go:44	request	{"method": "GET", "path": "/api/v1/practice-routes", "query": "", "status": 200, "latency": "1.515875ms", "ip": "::1"}
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:127
+[0m[33m[0.704ms] [34;1m[rows:1][0m SELECT count(*) FROM "question" WHERE question.is_deleted = false
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:127
+[0m[33m[1.519ms] [34;1m[rows:1][0m SELECT count(*) FROM "question" WHERE question.is_deleted = false
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:43
+[0m[33m[1.745ms] [34;1m[rows:1][0m SELECT count(*) FROM "question_bank" WHERE is_deleted = false
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:141
+[0m[33m[1.043ms] [34;1m[rows:15][0m SELECT * FROM "question" WHERE question.is_deleted = false ORDER BY view_count DESC, id ASC LIMIT 30
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:141
+[0m[33m[0.396ms] [34;1m[rows:15][0m SELECT * FROM "question" WHERE question.is_deleted = false ORDER BY view_count DESC, id ASC LIMIT 15
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.297ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 1
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:47
+[0m[33m[0.406ms] [34;1m[rows:6][0m SELECT * FROM "question_bank" WHERE is_deleted = false ORDER BY sort ASC, id ASC LIMIT 50
+2026-04-18T06:44:04.257+0800	[34mINFO[0m	logger/logger.go:44	request	{"method": "GET", "path": "/api/v1/banks", "query": "page=1&page_size=50", "status": 200, "latency": "2.672375ms", "ip": "::1"}
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.368ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 1
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.196ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 1 LIMIT 1
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.099ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 1 LIMIT 1
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.158ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 2
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.223ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 2
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.143ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 2 LIMIT 1
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.128ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 2 LIMIT 1
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.173ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 3
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.200ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 3
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.319ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 3 LIMIT 1
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.523ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 4
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.588ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 3 LIMIT 1
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.420ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 4 LIMIT 1
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[2.982ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 4
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.622ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 5
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.873ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 4 LIMIT 1
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.234ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 5 LIMIT 1
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.455ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 5
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.270ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 6
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.182ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 5 LIMIT 1
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.325ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 6 LIMIT 1
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:43
+[0m[33m[0.358ms] [34;1m[rows:1][0m SELECT count(*) FROM "question_bank" WHERE is_deleted = false
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.147ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 6
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.185ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 7
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.191ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 6 LIMIT 1
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.164ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 7 LIMIT 1
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.209ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 8
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.387ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 7
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.297ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 8 LIMIT 1
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.483ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 7 LIMIT 1
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.528ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 9
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:47
+[0m[33m[1.707ms] [34;1m[rows:6][0m SELECT * FROM "question_bank" WHERE is_deleted = false ORDER BY sort ASC, id ASC LIMIT 50
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.155ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 9 LIMIT 1
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.219ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 8
+2026-04-18T06:44:04.267+0800	[34mINFO[0m	logger/logger.go:44	request	{"method": "GET", "path": "/api/v1/banks", "query": "page=1&page_size=50", "status": 200, "latency": "2.302459ms", "ip": "::1"}
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.211ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 10
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.184ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 8 LIMIT 1
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.147ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 10 LIMIT 1
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.161ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 11
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.197ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 9
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.140ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 9 LIMIT 1
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.162ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 11 LIMIT 1
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.251ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 10
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.218ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 12
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.130ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 10 LIMIT 1
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.140ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 12 LIMIT 1
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.143ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 11
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.132ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 11 LIMIT 1
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.283ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 13
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.465ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 13 LIMIT 1
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.559ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 12
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.148ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 12 LIMIT 1
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.151ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 14
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.174ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 14 LIMIT 1
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.255ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 13
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.437ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 15
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.389ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 13 LIMIT 1
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.135ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 14
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.229ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 15 LIMIT 1
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.112ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 14 LIMIT 1
+2026-04-18T06:44:04.270+0800	[34mINFO[0m	logger/logger.go:44	request	{"method": "GET", "path": "/api/v1/questions/hot", "query": "page=1&page_size=15", "status": 200, "latency": "15.527125ms", "ip": "::1"}
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.268ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 15
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.213ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 15 LIMIT 1
+2026-04-18T06:44:04.271+0800	[34mINFO[0m	logger/logger.go:44	request	{"method": "GET", "path": "/api/v1/questions", "query": "page=1&page_size=30", "status": 200, "latency": "16.017166ms", "ip": "::1"}
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:127
+[0m[33m[0.188ms] [34;1m[rows:1][0m SELECT count(*) FROM "question" WHERE question.is_deleted = false
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:127
+[0m[33m[0.255ms] [34;1m[rows:1][0m SELECT count(*) FROM "question" WHERE question.is_deleted = false
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:141
+[0m[33m[0.204ms] [34;1m[rows:15][0m SELECT * FROM "question" WHERE question.is_deleted = false ORDER BY view_count DESC, id ASC LIMIT 30
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:141
+[0m[33m[0.187ms] [34;1m[rows:15][0m SELECT * FROM "question" WHERE question.is_deleted = false ORDER BY view_count DESC, id ASC LIMIT 15
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.147ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 1
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.175ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 1
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.110ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 1 LIMIT 1
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.106ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 1 LIMIT 1
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.219ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 2
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.277ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 2
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.299ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 2 LIMIT 1
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.529ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 2 LIMIT 1
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.255ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 3
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.518ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 3
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.383ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 3 LIMIT 1
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.847ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 4
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[1.193ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 3 LIMIT 1
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[1.112ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 4 LIMIT 1
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[3.500ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 4
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[2.917ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 5
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.669ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 5 LIMIT 1
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[1.901ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 4 LIMIT 1
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.861ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 6
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.134ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 5
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.108ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 5 LIMIT 1
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.206ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 6 LIMIT 1
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.105ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 6
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.120ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 7
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.092ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 7 LIMIT 1
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.171ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 6 LIMIT 1
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.130ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 8
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.119ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 7
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.076ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 8 LIMIT 1
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.067ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 7 LIMIT 1
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.089ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 9
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.105ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 8
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.072ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 9 LIMIT 1
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.073ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 8 LIMIT 1
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.072ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 10
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.079ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 9
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.063ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 9 LIMIT 1
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.103ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 10 LIMIT 1
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.087ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 10
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.071ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 11
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.059ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 10 LIMIT 1
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.079ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 11 LIMIT 1
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.092ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 11
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.078ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 12
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.071ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 11 LIMIT 1
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.085ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 12 LIMIT 1
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.070ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 12
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.480ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 13
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.798ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 12 LIMIT 1
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[1.362ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 13 LIMIT 1
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[1.071ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 13
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.419ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 13 LIMIT 1
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.540ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 14
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.208ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 14 LIMIT 1
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.395ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 14
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.148ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 15
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.456ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 14 LIMIT 1
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.103ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 15 LIMIT 1
+2026-04-18T06:44:04.288+0800	[34mINFO[0m	logger/logger.go:44	request	{"method": "GET", "path": "/api/v1/questions", "query": "page=1&page_size=30", "status": 200, "latency": "14.741541ms", "ip": "::1"}
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.538ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 15
+
+2026/04/18 06:44:04 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.138ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 15 LIMIT 1
+2026-04-18T06:44:04.289+0800	[34mINFO[0m	logger/logger.go:44	request	{"method": "GET", "path": "/api/v1/questions/hot", "query": "page=1&page_size=15", "status": 200, "latency": "15.560959ms", "ip": "::1"}
+
+2026/04/18 06:44:06 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:127
+[0m[33m[0.643ms] [34;1m[rows:1][0m SELECT count(*) FROM "question" WHERE question.is_deleted = false
+
+2026/04/18 06:44:06 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:141
+[0m[33m[0.333ms] [34;1m[rows:15][0m SELECT * FROM "question" WHERE question.is_deleted = false ORDER BY view_count DESC, id ASC LIMIT 100
+
+2026/04/18 06:44:06 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.189ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 1
+
+2026/04/18 06:44:06 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.154ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 1 LIMIT 1
+
+2026/04/18 06:44:06 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.177ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 2
+
+2026/04/18 06:44:06 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.164ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 2 LIMIT 1
+
+2026/04/18 06:44:06 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.153ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 3
+
+2026/04/18 06:44:06 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.169ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 3 LIMIT 1
+
+2026/04/18 06:44:06 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.417ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 4
+
+2026/04/18 06:44:06 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.353ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 4 LIMIT 1
+
+2026/04/18 06:44:06 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.192ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 5
+
+2026/04/18 06:44:06 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.217ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 5 LIMIT 1
+
+2026/04/18 06:44:06 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.153ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 6
+
+2026/04/18 06:44:06 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.126ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 6 LIMIT 1
+
+2026/04/18 06:44:06 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.141ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 7
+
+2026/04/18 06:44:06 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.361ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 7 LIMIT 1
+
+2026/04/18 06:44:06 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.226ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 8
+
+2026/04/18 06:44:06 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.123ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 8 LIMIT 1
+
+2026/04/18 06:44:06 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.137ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 9
+
+2026/04/18 06:44:06 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.127ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 9 LIMIT 1
+
+2026/04/18 06:44:06 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.129ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 10
+
+2026/04/18 06:44:06 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.130ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 10 LIMIT 1
+
+2026/04/18 06:44:06 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.121ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 11
+
+2026/04/18 06:44:06 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.146ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 11 LIMIT 1
+
+2026/04/18 06:44:06 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.185ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 12
+
+2026/04/18 06:44:06 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.169ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 12 LIMIT 1
+
+2026/04/18 06:44:06 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.338ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 13
+
+2026/04/18 06:44:06 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.122ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 13 LIMIT 1
+
+2026/04/18 06:44:06 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.144ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 14
+
+2026/04/18 06:44:06 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.159ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 14 LIMIT 1
+
+2026/04/18 06:44:06 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.149ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 15
+
+2026/04/18 06:44:06 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.123ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 15 LIMIT 1
+2026-04-18T06:44:06.153+0800	[34mINFO[0m	logger/logger.go:44	request	{"method": "GET", "path": "/api/v1/questions/hot", "query": "sort_by=heat&page=1&page_size=100", "status": 200, "latency": "7.49825ms", "ip": "::1"}
+
+2026/04/18 06:44:06 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:127
+[0m[33m[0.275ms] [34;1m[rows:1][0m SELECT count(*) FROM "question" WHERE question.is_deleted = false
+
+2026/04/18 06:44:06 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:141
+[0m[33m[0.285ms] [34;1m[rows:15][0m SELECT * FROM "question" WHERE question.is_deleted = false ORDER BY view_count DESC, id ASC LIMIT 100
+
+2026/04/18 06:44:06 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.171ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 1
+
+2026/04/18 06:44:06 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.104ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 1 LIMIT 1
+
+2026/04/18 06:44:06 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.150ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 2
+
+2026/04/18 06:44:06 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.149ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 2 LIMIT 1
+
+2026/04/18 06:44:06 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.122ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 3
+
+2026/04/18 06:44:06 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.137ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 3 LIMIT 1
+
+2026/04/18 06:44:06 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.096ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 4
+
+2026/04/18 06:44:06 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.125ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 4 LIMIT 1
+
+2026/04/18 06:44:06 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.153ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 5
+
+2026/04/18 06:44:06 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.140ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 5 LIMIT 1
+
+2026/04/18 06:44:06 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.128ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 6
+
+2026/04/18 06:44:06 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.133ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 6 LIMIT 1
+
+2026/04/18 06:44:06 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.151ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 7
+
+2026/04/18 06:44:06 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.139ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 7 LIMIT 1
+
+2026/04/18 06:44:06 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.149ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 8
+
+2026/04/18 06:44:06 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.136ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 8 LIMIT 1
+
+2026/04/18 06:44:06 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.164ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 9
+
+2026/04/18 06:44:06 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.101ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 9 LIMIT 1
+
+2026/04/18 06:44:06 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.139ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 10
+
+2026/04/18 06:44:06 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.134ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 10 LIMIT 1
+
+2026/04/18 06:44:06 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.117ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 11
+
+2026/04/18 06:44:06 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.101ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 11 LIMIT 1
+
+2026/04/18 06:44:06 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.138ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 12
+
+2026/04/18 06:44:06 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.099ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 12 LIMIT 1
+
+2026/04/18 06:44:06 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.102ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 13
+
+2026/04/18 06:44:06 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.105ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 13 LIMIT 1
+
+2026/04/18 06:44:06 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.097ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 14
+
+2026/04/18 06:44:06 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.083ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 14 LIMIT 1
+
+2026/04/18 06:44:06 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.129ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 15
+
+2026/04/18 06:44:06 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.081ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 15 LIMIT 1
+2026-04-18T06:44:06.160+0800	[34mINFO[0m	logger/logger.go:44	request	{"method": "GET", "path": "/api/v1/questions/hot", "query": "sort_by=heat&page=1&page_size=100", "status": 200, "latency": "5.131917ms", "ip": "::1"}
+
+2026/04/18 06:44:08 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/practice_route_repository.go:35
+[0m[33m[6.557ms] [34;1m[rows:32][0m SELECT * FROM "route_phase" WHERE "route_phase"."route_id" IN (1,2,3,4,5,6,7,8) ORDER BY sort ASC
+
+2026/04/18 06:44:08 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/practice_route_repository.go:35
+[0m[33m[8.272ms] [34;1m[rows:8][0m SELECT * FROM "practice_route" WHERE is_deleted = false ORDER BY sort ASC
+2026-04-18T06:44:08.085+0800	[34mINFO[0m	logger/logger.go:44	request	{"method": "GET", "path": "/api/v1/practice-routes", "query": "", "status": 200, "latency": "8.618708ms", "ip": "::1"}
+
+2026/04/18 06:44:08 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/practice_route_repository.go:35
+[0m[33m[0.301ms] [34;1m[rows:32][0m SELECT * FROM "route_phase" WHERE "route_phase"."route_id" IN (1,2,3,4,5,6,7,8) ORDER BY sort ASC
+
+2026/04/18 06:44:08 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/practice_route_repository.go:35
+[0m[33m[0.876ms] [34;1m[rows:8][0m SELECT * FROM "practice_route" WHERE is_deleted = false ORDER BY sort ASC
+2026-04-18T06:44:08.089+0800	[34mINFO[0m	logger/logger.go:44	request	{"method": "GET", "path": "/api/v1/practice-routes", "query": "", "status": 200, "latency": "1.178042ms", "ip": "::1"}
+
+2026/04/18 06:44:10 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/practice_route_repository.go:35
+[0m[33m[0.306ms] [34;1m[rows:32][0m SELECT * FROM "route_phase" WHERE "route_phase"."route_id" IN (1,2,3,4,5,6,7,8) ORDER BY sort ASC
+
+2026/04/18 06:44:10 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/practice_route_repository.go:35
+[0m[33m[0.978ms] [34;1m[rows:8][0m SELECT * FROM "practice_route" WHERE is_deleted = false ORDER BY sort ASC
+2026-04-18T06:44:10.347+0800	[34mINFO[0m	logger/logger.go:44	request	{"method": "GET", "path": "/api/v1/practice-routes", "query": "", "status": 200, "latency": "1.232459ms", "ip": "::1"}
+
+2026/04/18 06:44:10 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/practice_route_repository.go:35
+[0m[33m[0.410ms] [34;1m[rows:32][0m SELECT * FROM "route_phase" WHERE "route_phase"."route_id" IN (1,2,3,4,5,6,7,8) ORDER BY sort ASC
+
+2026/04/18 06:44:10 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/practice_route_repository.go:35
+[0m[33m[1.266ms] [34;1m[rows:8][0m SELECT * FROM "practice_route" WHERE is_deleted = false ORDER BY sort ASC
+2026-04-18T06:44:10.351+0800	[34mINFO[0m	logger/logger.go:44	request	{"method": "GET", "path": "/api/v1/practice-routes", "query": "", "status": 200, "latency": "1.509709ms", "ip": "::1"}
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:43
+[0m[33m[0.479ms] [34;1m[rows:1][0m SELECT count(*) FROM "question_bank" WHERE is_deleted = false
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:127
+[0m[33m[0.471ms] [34;1m[rows:1][0m SELECT count(*) FROM "question" WHERE question.is_deleted = false
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:127
+[0m[33m[0.539ms] [34;1m[rows:1][0m SELECT count(*) FROM "question" WHERE question.is_deleted = false
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:47
+[0m[33m[0.357ms] [34;1m[rows:6][0m SELECT * FROM "question_bank" WHERE is_deleted = false ORDER BY sort ASC, id ASC LIMIT 50
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:141
+[0m[33m[0.379ms] [34;1m[rows:15][0m SELECT * FROM "question" WHERE question.is_deleted = false ORDER BY view_count DESC, id ASC LIMIT 30
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:141
+[0m[33m[0.351ms] [34;1m[rows:15][0m SELECT * FROM "question" WHERE question.is_deleted = false ORDER BY view_count DESC, id ASC LIMIT 15
+2026-04-18T06:44:16.397+0800	[34mINFO[0m	logger/logger.go:44	request	{"method": "GET", "path": "/api/v1/banks", "query": "page=1&page_size=50", "status": 200, "latency": "1.361625ms", "ip": "::1"}
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.167ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 1
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.191ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 1
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.241ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 1 LIMIT 1
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.345ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 1 LIMIT 1
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.442ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 2
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.373ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 2
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.988ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 2 LIMIT 1
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.213ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 3
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.480ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 2 LIMIT 1
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.394ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 3
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.504ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 3 LIMIT 1
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.139ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 3 LIMIT 1
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.175ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 4
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.808ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 4 LIMIT 1
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.922ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 4
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:43
+[0m[33m[0.487ms] [34;1m[rows:1][0m SELECT count(*) FROM "question_bank" WHERE is_deleted = false
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.507ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 5
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.528ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 4 LIMIT 1
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.244ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 5 LIMIT 1
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.261ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 5
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.418ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 6
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.198ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 5 LIMIT 1
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:47
+[0m[33m[1.076ms] [34;1m[rows:6][0m SELECT * FROM "question_bank" WHERE is_deleted = false ORDER BY sort ASC, id ASC LIMIT 50
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.451ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 6 LIMIT 1
+2026-04-18T06:44:16.403+0800	[34mINFO[0m	logger/logger.go:44	request	{"method": "GET", "path": "/api/v1/banks", "query": "page=1&page_size=50", "status": 200, "latency": "1.907125ms", "ip": "::1"}
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.545ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 6
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.210ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 7
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.330ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 6 LIMIT 1
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.290ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 7 LIMIT 1
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.467ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 7
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.195ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 7 LIMIT 1
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.670ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 8
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.272ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 8 LIMIT 1
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.511ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 8
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.249ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 8 LIMIT 1
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.312ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 9
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.304ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 9 LIMIT 1
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.409ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 9
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.329ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 10
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.463ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 9 LIMIT 1
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.195ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 10 LIMIT 1
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.214ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 10
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.116ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 11
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.101ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 10 LIMIT 1
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.156ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 11 LIMIT 1
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.156ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 11
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.162ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 12
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.131ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 11 LIMIT 1
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.155ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 12 LIMIT 1
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.183ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 12
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.243ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 13
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.147ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 12 LIMIT 1
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.118ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 13 LIMIT 1
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.161ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 13
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.274ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 14
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.417ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 13 LIMIT 1
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.644ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 14
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.910ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 14 LIMIT 1
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.137ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 15
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.168ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 14 LIMIT 1
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.109ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 15 LIMIT 1
+2026-04-18T06:44:16.410+0800	[34mINFO[0m	logger/logger.go:44	request	{"method": "GET", "path": "/api/v1/questions", "query": "page=1&page_size=30", "status": 200, "latency": "13.913041ms", "ip": "::1"}
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.268ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 15
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.138ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 15 LIMIT 1
+2026-04-18T06:44:16.410+0800	[34mINFO[0m	logger/logger.go:44	request	{"method": "GET", "path": "/api/v1/questions/hot", "query": "page=1&page_size=15", "status": 200, "latency": "14.406791ms", "ip": "::1"}
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:127
+[0m[33m[0.218ms] [34;1m[rows:1][0m SELECT count(*) FROM "question" WHERE question.is_deleted = false
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:127
+[0m[33m[0.317ms] [34;1m[rows:1][0m SELECT count(*) FROM "question" WHERE question.is_deleted = false
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:141
+[0m[33m[0.278ms] [34;1m[rows:15][0m SELECT * FROM "question" WHERE question.is_deleted = false ORDER BY view_count DESC, id ASC LIMIT 30
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:141
+[0m[33m[0.325ms] [34;1m[rows:15][0m SELECT * FROM "question" WHERE question.is_deleted = false ORDER BY view_count DESC, id ASC LIMIT 15
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.327ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 1
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.409ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 1
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.320ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 1 LIMIT 1
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.220ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 1 LIMIT 1
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.872ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 2
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[1.009ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 2
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[1.056ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 2 LIMIT 1
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.383ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 2 LIMIT 1
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.582ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 3
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.181ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 3
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.114ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 3 LIMIT 1
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.193ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 3 LIMIT 1
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.152ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 4
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.156ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 4
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.237ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 4 LIMIT 1
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.396ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 4 LIMIT 1
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[1.411ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 5
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[1.458ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 5
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.318ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 5 LIMIT 1
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.404ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 5 LIMIT 1
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.475ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 6
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.551ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 6
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.446ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 6 LIMIT 1
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.228ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 6 LIMIT 1
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.546ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 7
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.663ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 7
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.373ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 7 LIMIT 1
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.368ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 7 LIMIT 1
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.369ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 8
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.447ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 8
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.239ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 8 LIMIT 1
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.188ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 8 LIMIT 1
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.133ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 9
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.163ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 9
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.128ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 9 LIMIT 1
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.228ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 9 LIMIT 1
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.187ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 10
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.240ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 10
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.125ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 10 LIMIT 1
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.098ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 10 LIMIT 1
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.191ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 11
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.175ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 11
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.115ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 11 LIMIT 1
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.131ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 11 LIMIT 1
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.257ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 12
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.346ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 12
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.159ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 12 LIMIT 1
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.227ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 12 LIMIT 1
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.148ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 13
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.151ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 13
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.162ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 13 LIMIT 1
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.154ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 13 LIMIT 1
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.187ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 14
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.262ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 14
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.328ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 14 LIMIT 1
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.311ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 14 LIMIT 1
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.188ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 15
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.144ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 15
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.150ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 15 LIMIT 1
+
+2026/04/18 06:44:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.207ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 15 LIMIT 1
+2026-04-18T06:44:16.427+0800	[34mINFO[0m	logger/logger.go:44	request	{"method": "GET", "path": "/api/v1/questions", "query": "page=1&page_size=30", "status": 200, "latency": "13.857833ms", "ip": "::1"}
+2026-04-18T06:44:16.427+0800	[34mINFO[0m	logger/logger.go:44	request	{"method": "GET", "path": "/api/v1/questions/hot", "query": "page=1&page_size=15", "status": 200, "latency": "13.797917ms", "ip": "::1"}
+
+2026/04/18 06:44:29 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:93
+[0m[33m[1.190ms] [34;1m[rows:1][0m SELECT * FROM "question" WHERE id = 1 AND is_deleted = false ORDER BY "question"."id" LIMIT 1
+
+2026/04/18 06:44:29 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.241ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 1
+
+2026/04/18 06:44:29 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.146ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 1 LIMIT 1
+
+2026/04/18 06:44:29 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:157
+[0m[33m[2.406ms] [34;1m[rows:0][0m SELECT * FROM "question" WHERE id IN (SELECT "question_id" FROM "question_bank_question" WHERE bank_id = 0 AND question_id != 1) AND is_deleted = false ORDER BY view_count DESC LIMIT 3
+2026-04-18T06:44:29.355+0800	[34mINFO[0m	logger/logger.go:44	request	{"method": "GET", "path": "/api/v1/questions/1", "query": "", "status": 200, "latency": "4.525542ms", "ip": "::1"}
+
+2026/04/18 06:44:29 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:93
+[0m[33m[0.520ms] [34;1m[rows:1][0m SELECT * FROM "question" WHERE id = 1 AND is_deleted = false ORDER BY "question"."id" LIMIT 1
+
+2026/04/18 06:44:29 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.173ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 1
+
+2026/04/18 06:44:29 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.144ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 1 LIMIT 1
+
+2026/04/18 06:44:29 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:157
+[0m[33m[0.348ms] [34;1m[rows:0][0m SELECT * FROM "question" WHERE id IN (SELECT "question_id" FROM "question_bank_question" WHERE bank_id = 0 AND question_id != 1) AND is_deleted = false ORDER BY view_count DESC LIMIT 3
+2026-04-18T06:44:29.358+0800	[34mINFO[0m	logger/logger.go:44	request	{"method": "GET", "path": "/api/v1/questions/1", "query": "", "status": 200, "latency": "1.590083ms", "ip": "::1"}
+
+2026/04/18 06:44:32 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:93
+[0m[33m[0.929ms] [34;1m[rows:1][0m SELECT * FROM "question" WHERE id = 1 AND is_deleted = false ORDER BY "question"."id" LIMIT 1
+
+2026/04/18 06:44:32 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[1.645ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 1
+
+2026/04/18 06:44:32 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.383ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 1 LIMIT 1
+
+2026/04/18 06:44:32 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:157
+[0m[33m[0.517ms] [34;1m[rows:0][0m SELECT * FROM "question" WHERE id IN (SELECT "question_id" FROM "question_bank_question" WHERE bank_id = 0 AND question_id != 1) AND is_deleted = false ORDER BY view_count DESC LIMIT 3
+2026-04-18T06:44:32.912+0800	[34mINFO[0m	logger/logger.go:44	request	{"method": "GET", "path": "/api/v1/questions/1", "query": "", "status": 200, "latency": "4.881916ms", "ip": "::1"}
+
+2026/04/18 06:44:32 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:93
+[0m[33m[2.832ms] [34;1m[rows:1][0m SELECT * FROM "question" WHERE id = 1 AND is_deleted = false ORDER BY "question"."id" LIMIT 1
+
+2026/04/18 06:44:32 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:167
+[0m[33m[0.420ms] [34;1m[rows:3][0m SELECT "tag"."name" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 1
+
+2026/04/18 06:44:32 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:178
+[0m[33m[0.177ms] [34;1m[rows:1][0m SELECT "tag"."category" FROM "tag" JOIN question_tag AS qt ON qt.tag_id = tag.id WHERE qt.question_id = 1 LIMIT 1
+
+2026/04/18 06:44:32 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/question_repository.go:157
+[0m[33m[0.456ms] [34;1m[rows:0][0m SELECT * FROM "question" WHERE id IN (SELECT "question_id" FROM "question_bank_question" WHERE bank_id = 0 AND question_id != 1) AND is_deleted = false ORDER BY view_count DESC LIMIT 3
+2026-04-18T06:44:32.919+0800	[34mINFO[0m	logger/logger.go:44	request	{"method": "GET", "path": "/api/v1/questions/1", "query": "", "status": 200, "latency": "4.358167ms", "ip": "::1"}
+
+2026/04/18 06:44:42 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/practice_route_repository.go:35
+[0m[33m[0.348ms] [34;1m[rows:32][0m SELECT * FROM "route_phase" WHERE "route_phase"."route_id" IN (1,2,3,4,5,6,7,8) ORDER BY sort ASC
+
+2026/04/18 06:44:42 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/practice_route_repository.go:35
+[0m[33m[1.494ms] [34;1m[rows:8][0m SELECT * FROM "practice_route" WHERE is_deleted = false ORDER BY sort ASC
+2026-04-18T06:44:42.482+0800	[34mINFO[0m	logger/logger.go:44	request	{"method": "GET", "path": "/api/v1/practice-routes", "query": "", "status": 200, "latency": "1.947209ms", "ip": "::1"}
+
+2026/04/18 06:44:42 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/practice_route_repository.go:35
+[0m[33m[0.381ms] [34;1m[rows:32][0m SELECT * FROM "route_phase" WHERE "route_phase"."route_id" IN (1,2,3,4,5,6,7,8) ORDER BY sort ASC
+
+2026/04/18 06:44:42 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/practice_route_repository.go:35
+[0m[33m[1.109ms] [34;1m[rows:8][0m SELECT * FROM "practice_route" WHERE is_deleted = false ORDER BY sort ASC
+2026-04-18T06:44:42.599+0800	[34mINFO[0m	logger/logger.go:44	request	{"method": "GET", "path": "/api/v1/practice-routes", "query": "", "status": 200, "latency": "50.477459ms", "ip": "::1"}
+
+2026/04/18 06:44:45 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/practice_route_repository.go:35
+[0m[33m[0.311ms] [34;1m[rows:32][0m SELECT * FROM "route_phase" WHERE "route_phase"."route_id" IN (1,2,3,4,5,6,7,8) ORDER BY sort ASC
+
+2026/04/18 06:44:45 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/practice_route_repository.go:35
+[0m[33m[0.922ms] [34;1m[rows:8][0m SELECT * FROM "practice_route" WHERE is_deleted = false ORDER BY sort ASC
+2026-04-18T06:44:45.288+0800	[34mINFO[0m	logger/logger.go:44	request	{"method": "GET", "path": "/api/v1/practice-routes", "query": "", "status": 200, "latency": "1.253542ms", "ip": "::1"}
+
+2026/04/18 06:44:45 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/practice_route_repository.go:35
+[0m[33m[0.343ms] [34;1m[rows:32][0m SELECT * FROM "route_phase" WHERE "route_phase"."route_id" IN (1,2,3,4,5,6,7,8) ORDER BY sort ASC
+
+2026/04/18 06:44:45 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/practice_route_repository.go:35
+[0m[33m[0.855ms] [34;1m[rows:8][0m SELECT * FROM "practice_route" WHERE is_deleted = false ORDER BY sort ASC
+2026-04-18T06:44:45.291+0800	[34mINFO[0m	logger/logger.go:44	request	{"method": "GET", "path": "/api/v1/practice-routes", "query": "", "status": 200, "latency": "1.118833ms", "ip": "::1"}
+
+2026/04/18 06:45:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/practice_route_repository.go:35
+[0m[33m[0.584ms] [34;1m[rows:32][0m SELECT * FROM "route_phase" WHERE "route_phase"."route_id" IN (1,2,3,4,5,6,7,8) ORDER BY sort ASC
+
+2026/04/18 06:45:16 [32m/Users/ssz/workspace/golang-pro/mianshi-pro/mianshi-mvp/internal/repository/practice_route_repository.go:35
+[0m[33m[80.810ms] [34;1m[rows:8][0m SELECT * FROM "practice_route" WHERE is_deleted = false ORDER BY sort ASC
+2026-04-18T06:45:16.486+0800	[34mINFO[0m	logger/logger.go:44	request	{"method": "GET", "path": "/api/v1/practice-routes", "query": "", "status": 200, "latency": "81.032167ms", "ip": "::1"}
+signal: killed

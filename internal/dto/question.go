@@ -123,9 +123,62 @@ type RelatedQuestion struct {
 	Title string `json:"title"`
 }
 
+type ListRecordsRequest struct {
+	Filter   string `form:"filter" binding:"omitempty,oneof=all master not-master"`
+	Page     int    `form:"page" binding:"omitempty,gte=1"`
+	PageSize int    `form:"page_size" binding:"omitempty,gte=1,lte=100"`
+}
+
+func (r *ListRecordsRequest) SetDefaults() {
+	if r.Filter == "" {
+		r.Filter = "all"
+	}
+	if r.Page < 1 {
+		r.Page = 1
+	}
+	if r.PageSize < 1 || r.PageSize > 100 {
+		r.PageSize = 10
+	}
+}
+
+type QuestionRecordItem struct {
+	ID                int64    `json:"id"`
+	QuestionID        int64    `json:"question_id"`
+	QuestionTitle     string   `json:"question_title"`
+	QuestionDifficulty string  `json:"question_difficulty"`
+	QuestionCategory  string   `json:"question_category"`
+	QuestionTags      []string `json:"question_tags"`
+	IsMaster          bool     `json:"is_master"`
+	LastViewTime      string   `json:"last_view_time"`
+	CreateTime        string   `json:"create_time"`
+}
+
 type PaginatedResponse struct {
 	List     interface{} `json:"list"`
 	Total    int64       `json:"total"`
 	Page     int         `json:"page"`
 	PageSize int         `json:"page_size"`
+}
+
+type ToggleFavoriteRequest struct {
+	QuestionID int64 `json:"question_id" binding:"required"`
+}
+
+type FavoriteItem struct {
+	ID             int64    `json:"id"`
+	QuestionID     int64    `json:"question_id"`
+	QuestionTitle  string   `json:"question_title"`
+	QuestionCategory string `json:"question_category"`
+	QuestionDifficulty string `json:"question_difficulty"`
+	QuestionTags   []string `json:"question_tags"`
+	CreateTime     string   `json:"create_time"`
+}
+
+type CreateRecordRequest struct {
+	QuestionID int64 `json:"question_id" binding:"required"`
+}
+
+type ToggleMasterRequest struct {
+	QuestionID int64 `json:"question_id" binding:"required"`
+	IsMaster   bool  `json:"is_master"`
 }

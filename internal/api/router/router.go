@@ -82,6 +82,13 @@ func Setup(h *handler.Handler, aiHandler *handler.AIHandler, prHandler *handler.
 			questions.GET("/hot", middleware.Validation(&dto.HotQuestionsRequest{}), questionHandler.ListHotQuestions)
 			questions.GET("/:id", middleware.Validation(&dto.GetQuestionRequest{}), questionHandler.GetQuestion)
 		}
+
+		records := v1.Group("/records")
+		{
+			records.GET("/my", middleware.Auth(cfg), middleware.Validation(&dto.ListRecordsRequest{}), questionHandler.ListUserRecords)
+			records.POST("", middleware.Auth(cfg), middleware.Validation(&dto.CreateRecordRequest{}), questionHandler.CreateRecord)
+			records.PUT("/master", middleware.Auth(cfg), middleware.Validation(&dto.ToggleMasterRequest{}), questionHandler.ToggleMaster)
+		}
 	}
 
 	return r

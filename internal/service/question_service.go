@@ -52,6 +52,11 @@ type QuestionService interface {
 	GetQuestionByID(ctx context.Context, id int64) (*dto.QuestionDetail, error)
 	ListHotQuestions(ctx context.Context, req *dto.HotQuestionsRequest) (*dto.PaginatedResponse, error)
 	ListQuestions(ctx context.Context, req *dto.ListQuestionsRequest) (*dto.PaginatedResponse, error)
+	ListUserRecords(ctx context.Context, userID int64, req *dto.ListRecordsRequest) (*dto.PaginatedResponse, error)
+	CreateRecord(ctx context.Context, userID int64, req *dto.CreateRecordRequest) (*dto.QuestionRecordItem, error)
+	ToggleMaster(ctx context.Context, userID int64, req *dto.ToggleMasterRequest) (*dto.QuestionRecordItem, error)
+	ToggleFavorite(ctx context.Context, userID int64, req *dto.ToggleFavoriteRequest) (bool, error)
+	ListFavorites(ctx context.Context, userID int64, req *dto.ListRecordsRequest) (*dto.PaginatedResponse, error)
 }
 
 type questionService struct {
@@ -271,4 +276,132 @@ func toQuestionListItem(q *model.Question) *dto.QuestionListItem {
 		StarCount:  q.StarCount,
 		LikeCount:  q.LikeCount,
 	}
+}
+
+func (s *questionService) ListUserRecords(ctx context.Context, userID int64, req *dto.ListRecordsRequest) (*dto.PaginatedResponse, error) {
+	req.SetDefaults()
+	offset := (req.Page - 1) * req.PageSize
+
+	records, total, err := s.questionRepo.ListUserRecords(ctx, userID, req.Filter, offset, req.PageSize)
+	if err != nil {
+		return nil, err
+	}
+
+	list := make([]*dto.QuestionRecordItem, len(records))
+	for i, record := range records {
+		tags, _ := s.questionRepo.GetQuestionTags(ctx, record.QuestionID)
+		category, _ := s.questionRepo.GetQuestionCategory(ctx, record.QuestionID)
+		question, _ := s.questionRepo.GetQuestionByID(ctx, record.QuestionID)
+
+		title := ""
+		difficulty := ""
+		if question != nil {
+			title = question.Title
+			difficulty = difficultyToStr(question.Difficulty)
+		}
+
+		list[i] = &dto.QuestionRecordItem{
+			ID:                 record.ID,
+			QuestionID:         record.QuestionID,
+			QuestionTitle:      title,
+			QuestionDifficulty: difficulty,
+			QuestionCategory:   category,
+			QuestionTags:       tags,
+			IsMaster:           record.IsMaster,
+			LastViewTime:       formatTime(record.LastViewTime),
+			CreateTime:         formatTime(record.CreateTime),
+		}
+	}
+
+	return &dto.PaginatedResponse{
+		List:     list,
+		Total:    total,
+		Page:     req.Page,
+		PageSize: req.PageSize,
+	}, nil
+}
+
+func formatTime(t time.Time) string {
+	if t.IsZero() {
+		return ""
+	}
+	return t.Format(time.RFC3339)
+}
+
+func (s *questionService) CreateRecord(ctx context.Context, userID int64, req *dto.CreateRecordRequest) (*dto.QuestionRecordItem, error) {
+	record, err := s.questionRepo.CreateRecord(ctx, userID, req.QuestionID)
+	if err != nil {
+		return nil, err
+	}
+
+	tags, _ := s.questionRepo.GetQuestionTags(ctx, record.QuestionID)
+	category, _ := s.questionRepo.GetQuestionCategory(ctx, record.QuestionID)
+	question, _ := s.questionRepo.GetQuestionByID(ctx, record.QuestionID)
+
+	title := ""
+	difficulty := ""
+	if question != nil {
+		title = question.Title
+		difficulty = difficultyToStr(question.Difficulty)
+	}
+
+	return &dto.QuestionRecordItem{
+		ID:                 record.ID,
+		QuestionID:         record.QuestionID,
+		QuestionTitle:      title,
+		QuestionDifficulty: difficulty,
+		QuestionCategory:   category,
+		QuestionTags:       tags,
+		IsMaster:           record.IsMaster,
+		LastViewTime:       formatTime(record.LastViewTime),
+		CreateTime:         formatTime(record.CreateTime),
+	}, nil
+}
+
+func (s *questionService) ToggleMaster(ctx context.Context, userID int64, req *dto.ToggleMasterRequest) (*dto.QuestionRecordItem, error) {
+	err := s.questionRepo.ToggleMaster(ctx, userID, req.QuestionID, req.IsMaster)
+	if err != nil {
+		return nil, err
+	}
+
+	record, err := s.questionRepo.GetRecordByQuestion(ctx, userID, req.QuestionID)
+	if err != nil || record == nil {
+		return nil, err
+	}
+
+	tags, _ := s.questionRepo.GetQuestionTags(ctx, record.QuestionID)
+	category, _ := s.questionRepo.GetQuestionCategory(ctx, record.QuestionID)
+	question, _ := s.questionRepo.GetQuestionByID(ctx, record.QuestionID)
+
+	title := ""
+	difficulty := ""
+	if question != nil {
+		title = question.Title
+		difficulty = difficultyToStr(question.Difficulty)
+	}
+
+	return &dto.QuestionRecordItem{
+		ID:                 record.ID,
+		QuestionID:         record.QuestionID,
+		QuestionTitle:      title,
+		QuestionDifficulty: difficulty,
+		QuestionCategory:   category,
+		QuestionTags:       tags,
+		IsMaster:           record.IsMaster,
+		LastViewTime:       formatTime(record.LastViewTime),
+		CreateTime:         formatTime(record.CreateTime),
+	}, nil
+}
+
+func (s *questionService) ToggleFavorite(ctx context.Context, userID int64, req *dto.ToggleFavoriteRequest) (bool, error) {
+	return false, nil
+}
+
+func (s *questionService) ListFavorites(ctx context.Context, userID int64, req *dto.ListRecordsRequest) (*dto.PaginatedResponse, error) {
+	return &dto.PaginatedResponse{
+		List:     []*dto.FavoriteItem{},
+		Total:    0,
+		Page:     req.Page,
+		PageSize: req.PageSize,
+	}, nil
 }

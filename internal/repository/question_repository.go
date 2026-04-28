@@ -2,6 +2,7 @@ package repository
 
 import (
 	"context"
+	"time"
 
 	"gorm.io/gorm"
 
@@ -17,6 +18,10 @@ type QuestionRepository interface {
 	GetRelatedQuestions(ctx context.Context, bankID, questionID int64, limit int) ([]*model.Question, error)
 	GetQuestionTags(ctx context.Context, questionID int64) ([]string, error)
 	GetQuestionCategory(ctx context.Context, questionID int64) (string, error)
+	ListUserRecords(ctx context.Context, userID int64, filter string, offset, limit int) ([]*model.UserQuestionRecord, int64, error)
+	CreateRecord(ctx context.Context, userID, questionID int64) (*model.UserQuestionRecord, error)
+	ToggleMaster(ctx context.Context, userID, questionID int64, isMaster bool) error
+	GetRecordByQuestion(ctx context.Context, userID, questionID int64) (*model.UserQuestionRecord, error)
 }
 
 type questionRepository struct {
@@ -177,4 +182,68 @@ func (r *questionRepository) GetQuestionCategory(ctx context.Context, questionID
 		Limit(1).
 		Pluck("tag.category", &category).Error
 	return category, err
+}
+
+func (r *questionRepository) ListUserRecords(ctx context.Context, userID int64, filter string, offset, limit int) ([]*model.UserQuestionRecord, int64, error) {
+	var records []*model.UserQuestionRecord
+	var total int64
+
+	query := r.db.WithContext(ctx).Where("user_id = ?", userID)
+
+	switch filter {
+	case "master":
+		query = query.Where("is_master = ?", true)
+	case "not-master":
+		query = query.Where("is_master = ?", false)
+	}
+
+	if err := query.Model(&model.UserQuestionRecord{}).Count(&total).Error; err != nil {
+		return nil, 0, err
+	}
+
+	err := query.Order("last_view_time DESC").Offset(offset).Limit(limit).Find(&records).Error
+	return records, total, err
+}
+
+func (r *questionRepository) CreateRecord(ctx context.Context, userID, questionID int64) (*model.UserQuestionRecord, error) {
+	var record model.UserQuestionRecord
+	err := r.db.WithContext(ctx).
+		Where("user_id = ? AND question_id = ?", userID, questionID).
+		First(&record).Error
+
+	if err == gorm.ErrRecordNotFound {
+		record = model.UserQuestionRecord{
+			UserID:       userID,
+			QuestionID:   questionID,
+			LastViewTime: time.Now(),
+		}
+		err = r.db.WithContext(ctx).Create(&record).Error
+		return &record, err
+	}
+
+	if err != nil {
+		return nil, err
+	}
+
+	record.LastViewTime = time.Now()
+	err = r.db.WithContext(ctx).Save(&record).Error
+	return &record, err
+}
+
+func (r *questionRepository) ToggleMaster(ctx context.Context, userID, questionID int64, isMaster bool) error {
+	return r.db.WithContext(ctx).
+		Model(&model.UserQuestionRecord{}).
+		Where("user_id = ? AND question_id = ?", userID, questionID).
+		Update("is_master", isMaster).Error
+}
+
+func (r *questionRepository) GetRecordByQuestion(ctx context.Context, userID, questionID int64) (*model.UserQuestionRecord, error) {
+	var record model.UserQuestionRecord
+	err := r.db.WithContext(ctx).
+		Where("user_id = ? AND question_id = ?", userID, questionID).
+		First(&record).Error
+	if err == gorm.ErrRecordNotFound {
+		return nil, nil
+	}
+	return &record, err
 }

@@ -102,3 +102,58 @@ func (h *QuestionHandler) ListQuestions(c *gin.Context) {
 
 	response.Success(c, result)
 }
+
+func (h *QuestionHandler) ListUserRecords(c *gin.Context) {
+	req := middleware.MustGetRequest[dto.ListRecordsRequest](c)
+	req.SetDefaults()
+
+	userID := middleware.GetUserID(c)
+	if userID == 0 {
+		response.Unauthorized(c)
+		return
+	}
+
+	result, err := h.questionService.ListUserRecords(c.Request.Context(), userID, req)
+	if err != nil {
+		response.InternalError(c, err)
+		return
+	}
+
+	response.Success(c, result)
+}
+
+func (h *QuestionHandler) CreateRecord(c *gin.Context) {
+	req := middleware.MustGetRequest[dto.CreateRecordRequest](c)
+
+	userID := middleware.GetUserID(c)
+	if userID == 0 {
+		response.Unauthorized(c)
+		return
+	}
+
+	result, err := h.questionService.CreateRecord(c.Request.Context(), userID, req)
+	if err != nil {
+		response.InternalError(c, err)
+		return
+	}
+
+	response.Success(c, result)
+}
+
+func (h *QuestionHandler) ToggleMaster(c *gin.Context) {
+	req := middleware.MustGetRequest[dto.ToggleMasterRequest](c)
+
+	userID := middleware.GetUserID(c)
+	if userID == 0 {
+		response.Unauthorized(c)
+		return
+	}
+
+	result, err := h.questionService.ToggleMaster(c.Request.Context(), userID, req)
+	if err != nil {
+		response.InternalError(c, err)
+		return
+	}
+
+	response.Success(c, result)
+}

@@ -93,3 +93,17 @@ type QuestionTagRelation struct {
 func (QuestionTagRelation) TableName() string {
 	return "question_tag"
 }
+
+type UserQuestionRecord struct {
+	ID           int64     `json:"id" gorm:"primaryKey;autoIncrement"`
+	UserID       int64     `json:"user_id" gorm:"index:idx_user_question;not null"`
+	QuestionID   int64     `json:"question_id" gorm:"index:idx_user_question;not null"`
+	IsMaster     bool      `json:"is_master" gorm:"default:false"`
+	LastViewTime time.Time `json:"last_view_time"`
+	CreateTime   time.Time `json:"create_time" gorm:"column:create_time;autoCreateTime"`
+	UpdateTime   time.Time `json:"update_time" gorm:"column:update_time;autoUpdateTime"`
+}
+
+func (UserQuestionRecord) TableName() string {
+	return "user_question_record"
+}

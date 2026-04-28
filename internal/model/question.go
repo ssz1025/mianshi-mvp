@@ -8,7 +8,7 @@ type QuestionBank struct {
 	Description    string    `json:"description" gorm:"type:text"`
 	Icon           string    `json:"icon" gorm:"type:varchar(255)"`
 	Category       string    `json:"category" gorm:"type:varchar(50);index"`
-	IsVIP          bool      `json:"is_vip" gorm:"default:false"`
+	IsVIP          bool      `json:"is_vip" gorm:"column:is_vip;default:false"`
 	TotalQuestions int       `json:"total_questions" gorm:"column:question_count;default:0"`
 	SortOrder      int       `json:"sort_order" gorm:"column:sort;default:0"`
 	IsDeleted      bool      `json:"is_deleted" gorm:"default:false"`
@@ -31,7 +31,7 @@ type Question struct {
 	Explanation    string    `json:"explanation" gorm:"type:text"`
 	Heat           int       `json:"heat" gorm:"default:0"`
 	BankID         int64     `json:"bank_id" gorm:"column:bank_id;default:0"`
-	IsVIP          bool      `json:"is_vip" gorm:"default:false"`
+	IsVIP          bool      `json:"is_vip" gorm:"column:is_vip;default:false"`
 	ViewCount      int       `json:"view_count" gorm:"default:0"`
 	StarCount      int       `json:"star_count" gorm:"default:0"`
 	LikeCount      int       `json:"like_count" gorm:"default:0"`
@@ -106,4 +106,15 @@ type UserQuestionRecord struct {
 
 func (UserQuestionRecord) TableName() string {
 	return "user_question_record"
+}
+
+type UserFavorite struct {
+	ID         int64     `json:"id" gorm:"primaryKey;autoIncrement"`
+	UserID     int64     `json:"user_id" gorm:"uniqueIndex:idx_user_fav_question;not null"`
+	QuestionID int64     `json:"question_id" gorm:"uniqueIndex:idx_user_fav_question;not null"`
+	CreateTime time.Time `json:"create_time" gorm:"column:create_time;autoCreateTime"`
+}
+
+func (UserFavorite) TableName() string {
+	return "user_favorite"
 }

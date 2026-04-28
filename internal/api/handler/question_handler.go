@@ -157,3 +157,42 @@ func (h *QuestionHandler) ToggleMaster(c *gin.Context) {
 
 	response.Success(c, result)
 }
+
+func (h *QuestionHandler) ToggleFavorite(c *gin.Context) {
+	req := middleware.MustGetRequest[dto.ToggleFavoriteRequest](c)
+
+	userID := middleware.GetUserID(c)
+	if userID == 0 {
+		response.Unauthorized(c)
+		return
+	}
+
+	isFavorited, err := h.questionService.ToggleFavorite(c.Request.Context(), userID, req)
+	if err != nil {
+		response.InternalError(c, err)
+		return
+	}
+
+	response.Success(c, gin.H{
+		"is_favorited": isFavorited,
+	})
+}
+
+func (h *QuestionHandler) ListFavorites(c *gin.Context) {
+	req := middleware.MustGetRequest[dto.ListRecordsRequest](c)
+	req.SetDefaults()
+
+	userID := middleware.GetUserID(c)
+	if userID == 0 {
+		response.Unauthorized(c)
+		return
+	}
+
+	result, err := h.questionService.ListFavorites(c.Request.Context(), userID, req)
+	if err != nil {
+		response.InternalError(c, err)
+		return
+	}
+
+	response.Success(c, result)
+}

@@ -34,6 +34,7 @@ func Setup(h *handler.Handler, aiHandler *handler.AIHandler, prHandler *handler.
 		middleware.Pprof(r)
 	}
 
+	r.Static("/static", "./uploads")
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
 	r.GET("/health", h.HealthCheck)
@@ -53,6 +54,7 @@ func Setup(h *handler.Handler, aiHandler *handler.AIHandler, prHandler *handler.
 			users.POST("", middleware.Validation(&dto.CreateUserRequest{}), h.CreateUser)
 			users.GET("", middleware.Validation(&dto.ListUsersRequest{}), h.ListUsers)
 			users.PUT("/me", middleware.Auth(cfg), h.UpdateCurrentUser)
+			users.POST("/me/avatar", middleware.Auth(cfg), h.UploadAvatar)
 			users.GET("/:id", middleware.Validation(&dto.GetUserRequest{}), h.GetUser)
 			users.PUT("/:id", middleware.Auth(cfg), middleware.Validation(&dto.UpdateUserRequest{}), h.UpdateUser)
 			users.DELETE("/:id", middleware.Auth(cfg), middleware.AdminOnly(), middleware.Validation(&dto.DeleteUserRequest{}), h.DeleteUser)
@@ -88,6 +90,12 @@ func Setup(h *handler.Handler, aiHandler *handler.AIHandler, prHandler *handler.
 			records.GET("/my", middleware.Auth(cfg), middleware.Validation(&dto.ListRecordsRequest{}), questionHandler.ListUserRecords)
 			records.POST("", middleware.Auth(cfg), middleware.Validation(&dto.CreateRecordRequest{}), questionHandler.CreateRecord)
 			records.PUT("/master", middleware.Auth(cfg), middleware.Validation(&dto.ToggleMasterRequest{}), questionHandler.ToggleMaster)
+		}
+
+		favorites := v1.Group("/favorites")
+		{
+			favorites.GET("/my", middleware.Auth(cfg), middleware.Validation(&dto.ListRecordsRequest{}), questionHandler.ListFavorites)
+			favorites.POST("/toggle", middleware.Auth(cfg), middleware.Validation(&dto.ToggleFavoriteRequest{}), questionHandler.ToggleFavorite)
 		}
 	}
 

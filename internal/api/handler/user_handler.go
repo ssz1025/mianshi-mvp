@@ -1,6 +1,10 @@
 package handler
 
 import (
+	"fmt"
+	"path/filepath"
+	"time"
+
 	"github.com/gin-gonic/gin"
 
 	"github.com/d60-Lab/gin-template/internal/api/middleware"
@@ -323,4 +327,51 @@ func (h *Handler) GetUserStats(c *gin.Context) {
 	}
 
 	response.Success(c, stats)
+}
+
+func (h *Handler) UploadAvatar(c *gin.Context) {
+	userID := middleware.GetUserID(c)
+	if userID == 0 {
+		response.Unauthorized(c)
+		return
+	}
+
+	file, err := c.FormFile("avatar")
+	if err != nil {
+		response.BadRequest(c, "please upload an image file")
+		return
+	}
+
+	ext := filepath.Ext(file.Filename)
+	allowedExts := map[string]bool{".jpg": true, ".jpeg": true, ".png": true, ".gif": true, ".webp": true}
+	if !allowedExts[ext] {
+		response.BadRequest(c, "only jpg, jpeg, png, gif, webp images are allowed")
+		return
+	}
+
+	if file.Size > 5*1024*1024 {
+		response.BadRequest(c, "image size must be less than 5MB")
+		return
+	}
+
+	objectName := fmt.Sprintf("avatars/%d/%d%s", userID, time.Now().UnixMilli(), ext)
+	dst := filepath.Join("uploads", objectName)
+	if err := c.SaveUploadedFile(file, dst); err != nil {
+		response.InternalError(c, err)
+		return
+	}
+
+	avatarURL := "/static/" + objectName
+
+	updateReq := &dto.UpdateUserRequest{
+		ID:     userID,
+		Avatar: &avatarURL,
+	}
+	user, err := h.userService.Update(c.Request.Context(), userID, updateReq)
+	if err != nil {
+		response.InternalError(c, err)
+		return
+	}
+
+	response.Success(c, user)
 }

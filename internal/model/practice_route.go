@@ -2,6 +2,7 @@ package model
 
 import (
 	"database/sql/driver"
+	"encoding/json"
 	"strings"
 	"time"
 )
@@ -14,8 +15,8 @@ type PracticeRoute struct {
 	Color           string       `json:"color" gorm:"type:varchar(100)"`
 	Description     string       `json:"description" gorm:"type:text"`
 	TargetLevel     string       `json:"target_level" gorm:"type:varchar(100)"`
-	SuitableFor     StringArray  `json:"suitable_for" gorm:"type:varchar(255)[]"`
-	Skills          StringArray   `json:"skills" gorm:"type:varchar(255)[]"`
+	SuitableFor     StringArray  `json:"suitable_for" gorm:"type:text"`
+	Skills          StringArray  `json:"skills" gorm:"type:text"`
 	InterviewWeight string       `json:"interview_weight" gorm:"type:varchar(50)"`
 	Sort            int          `json:"sort" gorm:"default:0"`
 	IsDeleted       bool         `json:"is_deleted" gorm:"default:false"`
@@ -25,15 +26,15 @@ type PracticeRoute struct {
 }
 
 type RoutePhase struct {
-	ID          int64      `json:"id" gorm:"primaryKey;autoIncrement"`
-	RouteID     int64      `json:"route_id" gorm:"index"`
-	Phase       string     `json:"phase" gorm:"type:varchar(100)"`
-	Duration    string     `json:"duration" gorm:"type:varchar(50)"`
-	Topics      StringArray `json:"topics" gorm:"type:varchar(255)[]"`
-	Description string     `json:"description" gorm:"type:text"`
-	Sort        int        `json:"sort" gorm:"default:0"`
-	CreateTime  time.Time  `json:"create_time" gorm:"column:create_time;autoCreateTime"`
-	UpdateTime  time.Time  `json:"update_time" gorm:"column:update_time;autoUpdateTime"`
+	ID          int64       `json:"id" gorm:"primaryKey;autoIncrement"`
+	RouteID     int64       `json:"route_id" gorm:"index"`
+	Phase       string      `json:"phase" gorm:"type:varchar(100)"`
+	Duration    string      `json:"duration" gorm:"type:varchar(50)"`
+	Topics      StringArray `json:"topics" gorm:"type:text"`
+	Description string      `json:"description" gorm:"type:text"`
+	Sort        int         `json:"sort" gorm:"default:0"`
+	CreateTime  time.Time   `json:"create_time" gorm:"column:create_time;autoCreateTime"`
+	UpdateTime  time.Time   `json:"update_time" gorm:"column:update_time;autoUpdateTime"`
 }
 
 type StringArray []string
@@ -58,9 +59,17 @@ func (s *StringArray) Scan(value interface{}) error {
 }
 
 func (s *StringArray) scanString(val string) error {
-	if val == "" || val == "{}" || val == "{}" {
+	if val == "" || val == "{}" || val == "[]" {
 		*s = []string{}
 		return nil
+	}
+
+	if val[0] == '[' {
+		var result []string
+		if err := json.Unmarshal([]byte(val), &result); err == nil {
+			*s = result
+			return nil
+		}
 	}
 
 	val = strings.TrimPrefix(val, "{")
@@ -85,9 +94,13 @@ func (s *StringArray) scanString(val string) error {
 
 func (s StringArray) Value() (driver.Value, error) {
 	if len(s) == 0 {
-		return "{}", nil
+		return "[]", nil
 	}
-	return "{" + strings.Join(s, ",") + "}", nil
+	data, err := json.Marshal([]string(s))
+	if err != nil {
+		return nil, err
+	}
+	return string(data), nil
 }
 
 func (PracticeRoute) TableName() string {

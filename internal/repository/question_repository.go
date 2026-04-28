@@ -18,10 +18,14 @@ type QuestionRepository interface {
 	GetRelatedQuestions(ctx context.Context, bankID, questionID int64, limit int) ([]*model.Question, error)
 	GetQuestionTags(ctx context.Context, questionID int64) ([]string, error)
 	GetQuestionCategory(ctx context.Context, questionID int64) (string, error)
+	GetQuestionBankIDs(ctx context.Context, questionID int64) ([]int64, error)
 	ListUserRecords(ctx context.Context, userID int64, filter string, offset, limit int) ([]*model.UserQuestionRecord, int64, error)
 	CreateRecord(ctx context.Context, userID, questionID int64) (*model.UserQuestionRecord, error)
 	ToggleMaster(ctx context.Context, userID, questionID int64, isMaster bool) error
 	GetRecordByQuestion(ctx context.Context, userID, questionID int64) (*model.UserQuestionRecord, error)
+	ToggleFavorite(ctx context.Context, userID, questionID int64) (bool, error)
+	ListFavorites(ctx context.Context, userID int64, offset, limit int) ([]*model.UserFavorite, int64, error)
+	CheckFavorite(ctx context.Context, userID, questionID int64) (bool, error)
 }
 
 type questionRepository struct {
@@ -184,6 +188,15 @@ func (r *questionRepository) GetQuestionCategory(ctx context.Context, questionID
 	return category, err
 }
 
+func (r *questionRepository) GetQuestionBankIDs(ctx context.Context, questionID int64) ([]int64, error) {
+	var bankIDs []int64
+	err := r.db.WithContext(ctx).
+		Model(&model.QuestionBankQuestion{}).
+		Where("question_id = ?", questionID).
+		Pluck("bank_id", &bankIDs).Error
+	return bankIDs, err
+}
+
 func (r *questionRepository) ListUserRecords(ctx context.Context, userID int64, filter string, offset, limit int) ([]*model.UserQuestionRecord, int64, error) {
 	var records []*model.UserQuestionRecord
 	var total int64
@@ -246,4 +259,54 @@ func (r *questionRepository) GetRecordByQuestion(ctx context.Context, userID, qu
 		return nil, nil
 	}
 	return &record, err
+}
+
+func (r *questionRepository) ToggleFavorite(ctx context.Context, userID, questionID int64) (bool, error) {
+	var fav model.UserFavorite
+	err := r.db.WithContext(ctx).
+		Where("user_id = ? AND question_id = ?", userID, questionID).
+		First(&fav).Error
+
+	if err == gorm.ErrRecordNotFound {
+		newFav := model.UserFavorite{
+			UserID:     userID,
+			QuestionID: questionID,
+		}
+		if err := r.db.WithContext(ctx).Create(&newFav).Error; err != nil {
+			return false, err
+		}
+		return true, nil
+	}
+
+	if err != nil {
+		return false, err
+	}
+
+	if err := r.db.WithContext(ctx).Delete(&fav).Error; err != nil {
+		return false, err
+	}
+	return false, nil
+}
+
+func (r *questionRepository) ListFavorites(ctx context.Context, userID int64, offset, limit int) ([]*model.UserFavorite, int64, error) {
+	var favorites []*model.UserFavorite
+	var total int64
+
+	query := r.db.WithContext(ctx).Where("user_id = ?", userID)
+
+	if err := query.Model(&model.UserFavorite{}).Count(&total).Error; err != nil {
+		return nil, 0, err
+	}
+
+	err := query.Order("create_time DESC").Offset(offset).Limit(limit).Find(&favorites).Error
+	return favorites, total, err
+}
+
+func (r *questionRepository) CheckFavorite(ctx context.Context, userID, questionID int64) (bool, error) {
+	var count int64
+	err := r.db.WithContext(ctx).
+		Model(&model.UserFavorite{}).
+		Where("user_id = ? AND question_id = ?", userID, questionID).
+		Count(&count).Error
+	return count > 0, err
 }

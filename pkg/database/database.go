@@ -5,6 +5,7 @@ import (
 	"time"
 
 	"gorm.io/driver/postgres"
+	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
 
@@ -12,16 +13,7 @@ import (
 	"github.com/d60-Lab/gin-template/pkg/config"
 )
 
-// InitDB 初始化数据库连接
 func InitDB(cfg *config.Config) (*gorm.DB, error) {
-	dsn := fmt.Sprintf("postgres://%s:%s@%s:%d/%s?sslmode=disable&TimeZone=Asia/Shanghai",
-		cfg.Database.Username,
-		cfg.Database.Password,
-		cfg.Database.Host,
-		cfg.Database.Port,
-		cfg.Database.Database,
-	)
-
 	var logLevel logger.LogLevel
 	if cfg.Server.Mode == "release" {
 		logLevel = logger.Error
@@ -29,33 +21,55 @@ func InitDB(cfg *config.Config) (*gorm.DB, error) {
 		logLevel = logger.Info
 	}
 
-	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{
+	gormConfig := &gorm.Config{
 		Logger:                                   logger.Default.LogMode(logLevel),
 		DisableForeignKeyConstraintWhenMigrating: true,
-	})
-	if err != nil {
-		return nil, err
 	}
 
-	sqlDB, err := db.DB()
-	if err != nil {
-		return nil, err
+	var db *gorm.DB
+	var err error
+
+	switch cfg.Database.Driver {
+	case "sqlite":
+		db, err = gorm.Open(sqlite.Open(cfg.Database.Database), gormConfig)
+		if err != nil {
+			return nil, err
+		}
+	default:
+		dsn := fmt.Sprintf("postgres://%s:%s@%s:%d/%s?sslmode=disable&TimeZone=Asia/Shanghai",
+			cfg.Database.Username,
+			cfg.Database.Password,
+			cfg.Database.Host,
+			cfg.Database.Port,
+			cfg.Database.Database,
+		)
+		db, err = gorm.Open(postgres.Open(dsn), gormConfig)
+		if err != nil {
+			return nil, err
+		}
+		sqlDB, err := db.DB()
+		if err != nil {
+			return nil, err
+		}
+		sqlDB.SetMaxOpenConns(cfg.Database.MaxOpenConns)
+		sqlDB.SetMaxIdleConns(cfg.Database.MaxIdleConns)
+		sqlDB.SetConnMaxLifetime(time.Duration(cfg.Database.ConnMaxLifetime) * time.Second)
+		if err := db.Exec("SET search_path TO public").Error; err != nil {
+			return nil, fmt.Errorf("failed to set search_path: %w", err)
+		}
 	}
 
-	// 设置连接池
-	sqlDB.SetMaxOpenConns(cfg.Database.MaxOpenConns)
-	sqlDB.SetMaxIdleConns(cfg.Database.MaxIdleConns)
-	sqlDB.SetConnMaxLifetime(time.Duration(cfg.Database.ConnMaxLifetime) * time.Second)
-
-	// 设置 search_path
-	if err := db.Exec("SET search_path TO public").Error; err != nil {
-		return nil, fmt.Errorf("failed to set search_path: %w", err)
-	}
-
-	// 自动迁移（仅创建不存在的表，不修改已有表）
 	if err := db.AutoMigrate(
+		&model.User{},
+		&model.QuestionBank{},
 		&model.QuestionBankQuestion{},
+		&model.QuestionTag{},
 		&model.QuestionTagRelation{},
+		&model.Question{},
+		&model.UserQuestionRecord{},
+		&model.UserFavorite{},
+		&model.PracticeRoute{},
+		&model.RoutePhase{},
 	); err != nil {
 		return nil, err
 	}

@@ -143,13 +143,26 @@ func (s *questionService) GetQuestionByID(ctx context.Context, id int64) (*dto.Q
 	category, _ := s.questionRepo.GetQuestionCategory(ctx, question.ID)
 
 	related := make([]dto.RelatedQuestion, 0)
-	bankQuestions, _ := s.questionRepo.GetRelatedQuestions(ctx, 0, question.ID, 3)
-	if bankQuestions != nil {
-		for _, rq := range bankQuestions {
-			related = append(related, dto.RelatedQuestion{
-				ID:    rq.ID,
-				Title: rq.Title,
-			})
+	bankIDs, _ := s.questionRepo.GetQuestionBankIDs(ctx, question.ID)
+	if len(bankIDs) > 0 {
+		bankQuestions, _ := s.questionRepo.GetRelatedQuestions(ctx, bankIDs[0], question.ID, 3)
+		if bankQuestions != nil {
+			for _, rq := range bankQuestions {
+				related = append(related, dto.RelatedQuestion{
+					ID:    rq.ID,
+					Title: rq.Title,
+				})
+			}
+		}
+	} else {
+		bankQuestions, _ := s.questionRepo.GetRelatedQuestions(ctx, 0, question.ID, 3)
+		if bankQuestions != nil {
+			for _, rq := range bankQuestions {
+				related = append(related, dto.RelatedQuestion{
+					ID:    rq.ID,
+					Title: rq.Title,
+				})
+			}
 		}
 	}
 
@@ -394,13 +407,45 @@ func (s *questionService) ToggleMaster(ctx context.Context, userID int64, req *d
 }
 
 func (s *questionService) ToggleFavorite(ctx context.Context, userID int64, req *dto.ToggleFavoriteRequest) (bool, error) {
-	return false, nil
+	return s.questionRepo.ToggleFavorite(ctx, userID, req.QuestionID)
 }
 
 func (s *questionService) ListFavorites(ctx context.Context, userID int64, req *dto.ListRecordsRequest) (*dto.PaginatedResponse, error) {
+	req.SetDefaults()
+	offset := (req.Page - 1) * req.PageSize
+
+	favorites, total, err := s.questionRepo.ListFavorites(ctx, userID, offset, req.PageSize)
+	if err != nil {
+		return nil, err
+	}
+
+	list := make([]*dto.FavoriteItem, len(favorites))
+	for i, fav := range favorites {
+		tags, _ := s.questionRepo.GetQuestionTags(ctx, fav.QuestionID)
+		category, _ := s.questionRepo.GetQuestionCategory(ctx, fav.QuestionID)
+		question, _ := s.questionRepo.GetQuestionByID(ctx, fav.QuestionID)
+
+		title := ""
+		difficulty := ""
+		if question != nil {
+			title = question.Title
+			difficulty = difficultyToStr(question.Difficulty)
+		}
+
+		list[i] = &dto.FavoriteItem{
+			ID:                  fav.ID,
+			QuestionID:          fav.QuestionID,
+			QuestionTitle:       title,
+			QuestionCategory:    category,
+			QuestionDifficulty:  difficulty,
+			QuestionTags:        tags,
+			CreateTime:          formatTime(fav.CreateTime),
+		}
+	}
+
 	return &dto.PaginatedResponse{
-		List:     []*dto.FavoriteItem{},
-		Total:    0,
+		List:     list,
+		Total:    total,
 		Page:     req.Page,
 		PageSize: req.PageSize,
 	}, nil
